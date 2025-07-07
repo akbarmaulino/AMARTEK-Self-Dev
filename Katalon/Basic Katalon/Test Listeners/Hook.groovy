@@ -24,19 +24,19 @@ import com.kms.katalon.core.context.TestSuiteContext
 
 class Hook {
 
-	@BeforeTestCase
-	def sampleBeforeTestCase(TestCaseContext testCaseContext) {
-		WebUI.openBrowser('')
-		
-		WebUI.navigateToUrl(GlobalVariable.baseURL)
-		
-		WebUI.maximizeWindow()
-	}
-
-	@AfterTestCase
-	def sampleAfterTestCase(TestCaseContext testCaseContext) {
-		WebUI.takeScreenshot()
-		WebUI.closeBrowser()
-	}
+//	@BeforeTestCase
+//	def sampleBeforeTestCase(TestCaseContext testCaseContext) {
+//		WebUI.openBrowser('')
+//		
+//		WebUI.navigateToUrl(GlobalVariable.baseURL)
+//		
+//		WebUI.maximizeWindow()
+//	}
+//
+//	@AfterTestCase
+//	def sampleAfterTestCase(TestCaseContext testCaseContext) {
+//		WebUI.takeScreenshot()
+//		WebUI.closeBrowser()
+//	}
 
 }

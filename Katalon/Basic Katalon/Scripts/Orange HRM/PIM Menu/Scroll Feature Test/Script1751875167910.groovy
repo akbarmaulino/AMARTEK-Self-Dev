@@ -17,16 +17,18 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-// Input username & password, lalu login
-WebUI.setText(findTestObject('Orange HRM/Login Page/field_Password'), GlobalVariable.username)
 
-WebUI.setText(findTestObject('Orange HRM/Login Page/field_Username'), GlobalVariable.password)
+// Input username & password, lalu login
+WebUI.setText(findTestObject('Orange HRM/Login Page/field_Username'), GlobalVariable.username)
+WebUI.setText(findTestObject('Orange HRM/Login Page/field_Password'), GlobalVariable.password)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Login Page/button_Login'))
 
+// Klik menu PIM
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_PIM'))
 
-CustomKeywords.'Scroll.scrollToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_nextPage'), 10)
+// Scroll ke button nextPage
+CustomKeywords.'com.website.Scroll.scrollToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_nextPage'), 10)
 
-CustomKeywords.'Scroll.scrollUpToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_Search'), 10)
-
+// Scroll ke button Search (scroll up)
+CustomKeywords.'com.website.Scroll.scrollUpToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_Search'), 10)

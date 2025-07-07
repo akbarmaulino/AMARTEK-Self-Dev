@@ -80,7 +80,7 @@ public class Scroll {
 				const element = document.evaluate('$escapedXpath', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 				return element !== null;
 			""", [])
-		
+
 			if (elementFound) {
 				break
 			} else {
@@ -101,7 +101,4 @@ public class Scroll {
 			println "Element not found after scrolling ${maxScrollCount} times: $xpath"
 		}
 	}
-
-
-
 }

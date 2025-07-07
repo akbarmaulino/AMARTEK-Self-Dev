@@ -16,12 +16,28 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import com.database.PostgreDBUtils as DBUtils
 
-WebUI.openBrowser('')
+try {
+    // Coba koneksi ke database
+    DBUtils.connectDB('localhost', '5432', 'MyDatabase', 'postgres', 'P@ssw0rd')
+    println "Koneksi berhasil! Password benar."
 
-WebUI.navigateToUrl('https://reqres.in/')
+    // Query SELECT (contoh cek user)
+    def rs = DBUtils.executeQuery("SELECT * FROM users WHERE name = 'Alice'")
+    if (rs.next()) {
+		println("Nama : " + rs.getString('name') + " Berhasil Ditemukan")
+	} else {
+        println "Data tidak ditemukan"
+    }
 
-WebUI.scrollToElement(findTestObject('Reqres.in/img'), 0)
-
-WebUI.takeScreenshot()
-
+} catch (Exception e) {
+    println "Koneksi gagal! Password salah atau DB tidak bisa diakses."
+    println e.message
+} finally {
+    try {
+        DBUtils.closeDB()
+    } catch (Exception e) {
+        println "Tidak bisa menutup koneksi: " + e.message
+    }
+}

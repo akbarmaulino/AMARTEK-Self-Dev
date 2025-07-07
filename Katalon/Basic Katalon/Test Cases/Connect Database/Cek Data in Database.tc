@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>Scroll to Location</name>
+   <name>Cek Data in Database</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>f30fbba6-5fe0-4d96-ba0f-8570fe9270cb</testCaseGuid>
+   <testCaseGuid>1d700a87-0429-4c15-a1d3-f5ef6cd202e6</testCaseGuid>
 </TestCaseEntity>

@@ -17,11 +17,27 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.openBrowser('')
+TestData data = findTestData('LoginCredential')
 
-WebUI.navigateToUrl('https://reqres.in/')
+for (int i = 1; i <= data.getRowNumbers(); i++) {
+    String username = data.getValue('username', i)
 
-WebUI.scrollToPosition(0, 4717)
+    String password = data.getValue('password', i)
 
-WebUI.takeScreenshot()
+    WebUI.setText(findTestObject('Orange HRM/Login Page/field_Username'), username)
+
+    WebUI.setText(findTestObject('Orange HRM/Login Page/field_Password'), password)
+
+    WebUI.click(findTestObject('Object Repository/Orange HRM/Login Page/button_Login'))
+
+    WebUI.delay(5)
+
+    String currentUrl = WebUI.getUrl()
+
+    if (currentUrl.contains('/dashboard/index')) {
+        println("Data Ke-$i: Sukses Masuk ke Main Page dengan Username: $username")
+    } else {
+        println("Data Ke-$i: Gagal Masuk ke Main Page / Gagal Login dengan Username: $username")
+    }
+}
 
