@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Basic Auth</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>9949bc0c-a14d-47c6-ba1d-c3ae9163e2ee</testCaseGuid>
+</TestCaseEntity>
