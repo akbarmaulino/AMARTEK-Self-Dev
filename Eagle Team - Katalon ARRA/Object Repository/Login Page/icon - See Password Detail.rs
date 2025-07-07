@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>icon - See Password Detail</name>
+   <tag></tag>
+   <elementGuidId>5afef716-5444-45f7-a9c1-3b6b12e73bea</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>span.rounded.btn.btn-light</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='root']/div/div/div/div[2]/div/div/div/div/div[3]/form/div[2]/div/div/div/span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>b3eb5f43-9072-4792-a64c-88af3f7cda49</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>rounded btn btn-light</value>
+      <webElementGuid>bf6ddd0e-8299-4d5e-ab23-d6e3e351a9b6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;root&quot;)/div[1]/div[@class=&quot;p-0 container-fluid&quot;]/div[@class=&quot;g-0 row&quot;]/div[@class=&quot;col-xl-3&quot;]/div[@class=&quot;auth-full-page-content p-md-5 p-4&quot;]/div[@class=&quot;w-100&quot;]/div[@class=&quot;d-flex flex-column h-100&quot;]/div[@class=&quot;my-auto&quot;]/div[@class=&quot;mt-4&quot;]/form[@class=&quot;form-horizontal&quot;]/div[@class=&quot;mb-3&quot;]/div[@class=&quot;row&quot;]/div[@class=&quot;col-md-12&quot;]/div[@class=&quot;input-group auth-pass-inputgroup&quot;]/span[@class=&quot;rounded btn btn-light&quot;]</value>
+      <webElementGuid>88f6f173-ff5d-4f8b-bd53-203d1b17a389</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='root']/div/div/div/div[2]/div/div/div/div/div[3]/form/div[2]/div/div/div/span</value>
+      <webElementGuid>7db63590-7094-473b-ac26-7a5509553025</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Password'])[1]/following::span[1]</value>
+      <webElementGuid>94039b65-7000-4d14-99a7-088092a2f6e7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Username'])[1]/following::span[1]</value>
+      <webElementGuid>ffec2c25-83e0-4e15-8037-3e57049e74c1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Log In'])[1]/preceding::span[1]</value>
+      <webElementGuid>36004913-793d-45e7-8558-fc4ceb7ad70d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div/span</value>
+      <webElementGuid>9e0257bf-d7a3-4671-898d-206c49c4ba3a</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

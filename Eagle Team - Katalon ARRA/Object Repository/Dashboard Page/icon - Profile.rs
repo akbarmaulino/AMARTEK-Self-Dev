@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>icon - Profile</name>
+   <tag></tag>
+   <elementGuidId>4a068d9a-983e-4f50-a5cc-6e06f31a8eb2</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>div.col-md-9</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id=&quot;root&quot;]/section/section/header/div/div/div[2]/div/ul</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>112cd713-63e6-4ef2-b78e-1e830d91f264</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>col-md-9</value>
+      <webElementGuid>89d48e48-1bcc-41f0-ba07-4d2754daf85e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>usermakerCRUD_MAKER</value>
+      <webElementGuid>038ed361-af21-4cc4-bf21-162d107a5ac5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;root&quot;)/section[@class=&quot;ant-layout ant-layout-has-sider&quot;]/section[@class=&quot;ant-layout site-layout arra-scrollable-container&quot;]/header[@class=&quot;ant-layout-header site-layout-background&quot;]/div[1]/div[@class=&quot;d-flex&quot;]/div[2]/div[1]/ul[@class=&quot;k-reset k-header k-menu k-menu-horizontal&quot;]/li[@id=&quot;d932f339-0205-41b9-9568-f6511a97e086_0&quot;]/div[@class=&quot;row mb-2&quot;]/div[@class=&quot;col-md-9&quot;]</value>
+      <webElementGuid>0dbb327c-56be-45ff-bd5c-005a1ca6ebae</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//li[@id='d932f339-0205-41b9-9568-f6511a97e086_0']/div/div[2]</value>
+      <webElementGuid>24dff758-1db3-4ec1-8ddf-225729280b6c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='SILARAS'])[1]/following::div[9]</value>
+      <webElementGuid>fa1a2736-91ef-4cb0-a629-976b29b596dd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='DJP'])[1]/following::div[11]</value>
+      <webElementGuid>cf2bb1cf-55f8-46a5-954b-8b4d51b01814</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Dashboard'])[2]/preceding::div[1]</value>
+      <webElementGuid>0b0040f4-eb15-4450-87bb-ac93197627ca</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li/div/div[2]</value>
+      <webElementGuid>363e2c8e-923c-4588-8270-fb14c15e64e5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[(text() = 'usermakerCRUD_MAKER' or . = 'usermakerCRUD_MAKER')]</value>
+      <webElementGuid>499156cb-3975-4e54-9b69-6e3c77545017</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Flow Login and Logout ARRA</description>
+   <name>TC1 - Add New User</name>
+   <tag>#PositiveCase</tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>11b914f0-73f9-49bc-8aa8-6ad20b2b645a</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>583ddad1-f5aa-41ae-99ce-b8a1304788cb</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>1f49410f-3067-4af2-a6c9-316706cfe431</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Usermaker'</defaultValue>
+      <description></description>
+      <id>583ddad1-f5aa-41ae-99ce-b8a1304788cb</id>
+      <masked>false</masked>
+      <name>Username</name>
+   </variable>
+   <variable>
+      <defaultValue>'Wrong Password'</defaultValue>
+      <description></description>
+      <id>1f49410f-3067-4af2-a6c9-316706cfe431</id>
+      <masked>false</masked>
+      <name>Password</name>
+   </variable>
+</TestCaseEntity>

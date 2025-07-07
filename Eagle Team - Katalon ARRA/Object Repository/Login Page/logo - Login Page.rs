@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>logo - Login Page</name>
+   <tag></tag>
+   <elementGuidId>20b7b3e6-f196-4736-aeb7-ca9bb6994adb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>div.shadow</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='root']/div/div/div/div[2]/div/div/div/div/div[2]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>7d7f0986-d692-43e4-8034-f88b93a597a7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>shadow</value>
+      <webElementGuid>2224c0d2-12ee-4921-9da2-55cfc908aef3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Welcome Back !Sign in to continue to ARRA.</value>
+      <webElementGuid>071ae79d-0a9e-4f21-af16-98f67f6d2e8d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;root&quot;)/div[1]/div[@class=&quot;p-0 container-fluid&quot;]/div[@class=&quot;g-0 row&quot;]/div[@class=&quot;col-xl-3&quot;]/div[@class=&quot;auth-full-page-content p-md-5 p-4&quot;]/div[@class=&quot;w-100&quot;]/div[@class=&quot;d-flex flex-column h-100&quot;]/div[@class=&quot;my-auto&quot;]/div[@class=&quot;shadow&quot;]</value>
+      <webElementGuid>56efaaff-856a-4ee2-a115-76134d514f68</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='root']/div/div/div/div[2]/div/div/div/div/div[2]</value>
+      <webElementGuid>8b3a4c2a-0a5f-4111-ab08-4cdc6d8d4c9b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Username'])[1]/preceding::div[1]</value>
+      <webElementGuid>b9afd615-85f9-4cfa-950b-6a1dc5163b9b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/div/div/div/div[2]</value>
+      <webElementGuid>34a61255-e3e5-43e0-b3ff-ae1349f69761</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[(text() = 'Welcome Back !Sign in to continue to ARRA.' or . = 'Welcome Back !Sign in to continue to ARRA.')]</value>
+      <webElementGuid>a93ef1fe-7f69-4784-b3fa-fa9761fa14ec</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

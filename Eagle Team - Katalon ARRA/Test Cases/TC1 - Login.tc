@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Flow Login and Logout ARRA</description>
+   <name>TC1 - Login</name>
+   <tag>#PositiveCase</tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>f0094a56-5e5d-4283-b164-57d126e809b9</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>3d40aa2a-9708-4a1f-9366-1752b202ce77</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>9ea29e89-27f3-4faa-921d-3d483f82ebb0</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'Usermaker'</defaultValue>
+      <description></description>
+      <id>3d40aa2a-9708-4a1f-9366-1752b202ce77</id>
+      <masked>false</masked>
+      <name>Username</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd'</defaultValue>
+      <description></description>
+      <id>9ea29e89-27f3-4faa-921d-3d483f82ebb0</id>
+      <masked>false</masked>
+      <name>Password</name>
+   </variable>
+</TestCaseEntity>
