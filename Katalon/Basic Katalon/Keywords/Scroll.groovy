@@ -29,8 +29,7 @@ public class Scroll {
 			return
 		}
 
-		String escapedXpath = xpath.replace("'", "\\'")  // Penting: Escape kutip satu di XPath
-
+		String escapedXpath = xpath.replace("'", "\\'") 
 		boolean elementFound = false
 
 		for (int i = 0; i < maxScrollCount; i++) {

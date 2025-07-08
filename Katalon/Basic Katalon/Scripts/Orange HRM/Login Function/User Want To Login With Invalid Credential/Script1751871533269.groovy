@@ -29,5 +29,3 @@ if (WebUI.verifyElementPresent(findTestObject('Orange HRM/Login Page/alert_Inval
     println('Alert Tidak Muncul')
 }
 
-WebUI.scrollToPosition(0, 0)
-
