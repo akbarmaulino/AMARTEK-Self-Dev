@@ -53,4 +53,32 @@
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'C:\\File Kerja\\QA\\Self Development Eagle Team\\Katalon\\Basic Katalon\\Resources\\Screenshot_1.png'</initValue>
+      <name>pathUploadFile</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Quality Assurance Engineer'</initValue>
+      <name>JobTitle</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Tensting Manual and Automation'</initValue>
+      <name>JobDescription</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Tester Quality Assurance'</initValue>
+      <name>JobNote</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

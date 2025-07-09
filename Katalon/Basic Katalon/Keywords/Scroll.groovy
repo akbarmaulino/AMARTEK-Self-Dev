@@ -15,8 +15,11 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-
+import org.openqa.selenium.JavascriptExecutor
+import com.kms.katalon.core.webui.driver.DriverFactory
 import internal.GlobalVariable
+import org.openqa.selenium.WebElement
+
 
 public class Scroll {
 
@@ -29,7 +32,7 @@ public class Scroll {
 			return
 		}
 
-		String escapedXpath = xpath.replace("'", "\\'") 
+		String escapedXpath = xpath.replace("'", "\\'")
 		boolean elementFound = false
 
 		for (int i = 0; i < maxScrollCount; i++) {
@@ -99,5 +102,12 @@ public class Scroll {
 		} else {
 			println "Element not found after scrolling ${maxScrollCount} times: $xpath"
 		}
+	}
+	
+	@Keyword
+	def scrollToWebElement(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getWebDriver()
+		js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element)
+		WebUI.delay(2)
 	}
 }
