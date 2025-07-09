@@ -16,15 +16,15 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
+import com.kms.katalon.core.util.KeywordUtil
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Login Page/field_Username'), GlobalVariable.username)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Login Page/button_Login'))
 
 if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Login Page/alert_Passworc Required'), 5)
 ) {
-    println('Alert Berhasil Muncul')
+    KeywordUtil.logInfo('Alert Berhasil Muncul')
 } else {
-    println('Alert Tidak Muncul')
+    KeywordUtil.logInfo('Alert Tidak Muncul')
 }
 

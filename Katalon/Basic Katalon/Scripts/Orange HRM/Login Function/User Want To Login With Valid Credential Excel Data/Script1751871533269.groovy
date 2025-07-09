@@ -16,7 +16,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
+import com.kms.katalon.core.util.KeywordUtil
 TestData data = findTestData('LoginCredential')
 
 for (int i = 1; i <= data.getRowNumbers(); i++) {
@@ -35,9 +35,9 @@ for (int i = 1; i <= data.getRowNumbers(); i++) {
     String currentUrl = WebUI.getUrl()
 
     if (currentUrl.contains('/dashboard/index')) {
-        println("Data Ke-$i: Sukses Masuk ke Main Page dengan Username: $username")
+        KeywordUtil.logInfo("Data Ke-$i: Sukses Masuk ke Main Page dengan Username: $username")
     } else {
-        println("Data Ke-$i: Gagal Masuk ke Main Page / Gagal Login dengan Username: $username")
+        KeywordUtil.logInfo("Data Ke-$i: Gagal Masuk ke Main Page / Gagal Login dengan Username: $username")
     }
 }
 

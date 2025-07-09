@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>div_Minee</name>
+   <name>alert_Success Delete</name>
    <tag></tag>
-   <elementGuidId>eb18d0f6-2898-4191-8575-41ec273ad5d7</elementGuidId>
+   <elementGuidId>61cf7818-b595-4266-b790-31586807f450</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='app']/div/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[2]</value>
+         <value>//div[@id='oxd-toaster_1']/div</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
+         <value>div.oxd-toast.oxd-toast--success.oxd-toast-container--toast</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,70 +23,70 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>c9a436cf-5cd0-4c8c-b292-0680d3bd4f4f</webElementGuid>
+      <webElementGuid>c02e9a92-aa04-466f-b675-5170e32df728</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>oxd-table-cell oxd-padding-cell</value>
-      <webElementGuid>843019d4-c3ff-4bc1-9506-cb6491dbd11a</webElementGuid>
+      <value>oxd-toast oxd-toast--success oxd-toast-container--toast</value>
+      <webElementGuid>b840ee49-b6cd-447f-be42-8083c559cce2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>role</name>
+      <name>aria-live</name>
       <type>Main</type>
-      <value>cell</value>
-      <webElementGuid>f8940708-5272-4998-a0e2-6714f8fd1a7a</webElementGuid>
+      <value>assertive</value>
+      <webElementGuid>fa4ea4c3-3654-43a9-9e22-4e9e84b6c89b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Minee</value>
-      <webElementGuid>9368eada-9acd-4ab7-a66a-4783b1f8cfc7</webElementGuid>
+      <value>SuccessSuccessfully Deleted×</value>
+      <webElementGuid>b228e981-8d29-4e1d-9579-d43666ca6780</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;app&quot;)/div[@class=&quot;oxd-layout orangehrm-upgrade-layout&quot;]/div[@class=&quot;oxd-layout-container&quot;]/div[@class=&quot;oxd-layout-context&quot;]/div[@class=&quot;orangehrm-background-container&quot;]/div[@class=&quot;orangehrm-paper-container&quot;]/div[@class=&quot;orangehrm-container&quot;]/div[@class=&quot;oxd-table&quot;]/div[@class=&quot;oxd-table-body&quot;]/div[@class=&quot;oxd-table-card&quot;]/div[@class=&quot;oxd-table-row oxd-table-row--with-border&quot;]/div[@class=&quot;oxd-table-cell oxd-padding-cell&quot;]</value>
-      <webElementGuid>0545c0b1-8945-4fe7-8d22-8158e7974e0c</webElementGuid>
+      <value>id(&quot;oxd-toaster_1&quot;)/div[@class=&quot;oxd-toast oxd-toast--success oxd-toast-container--toast&quot;]</value>
+      <webElementGuid>c7ed8678-ef01-4f8b-a9e7-65a63acd2e52</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:idRelative</name>
       <type>Main</type>
-      <value>//div[@id='app']/div/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[2]</value>
-      <webElementGuid>97739040-95a8-4dfc-913d-9c47c2755a87</webElementGuid>
+      <value>//div[@id='oxd-toaster_1']/div</value>
+      <webElementGuid>2523e526-4dee-4fa8-9ff4-0f14c20ef48b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:neighbor</name>
       <type>Main</type>
-      <value>(.//*[normalize-space(text()) and normalize-space(.)='Admin'])[1]/preceding::div[2]</value>
-      <webElementGuid>23b6ad5a-8204-4fc9-8938-0c51c6598010</webElementGuid>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='OrangeHRM, Inc'])[1]/following::div[2]</value>
+      <webElementGuid>ffd9ef23-c525-4759-9410-43dff8b9d140</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:position</name>
       <type>Main</type>
-      <value>//div[2]/div[3]/div/div[2]/div/div/div[2]</value>
-      <webElementGuid>6e35eff6-034f-4599-acb6-98b79b819aa0</webElementGuid>
+      <value>//div[2]/div</value>
+      <webElementGuid>8dfc2398-02e7-4c02-b1b3-ff325838753a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[(text() = 'Minee' or . = 'Minee')]</value>
-      <webElementGuid>32419656-96cf-492d-94e6-5073b20fa392</webElementGuid>
+      <value>//div[(text() = 'SuccessSuccessfully Deleted×' or . = 'SuccessSuccessfully Deleted×')]</value>
+      <webElementGuid>f09389ae-3aa8-4458-a526-bea81cf824a3</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

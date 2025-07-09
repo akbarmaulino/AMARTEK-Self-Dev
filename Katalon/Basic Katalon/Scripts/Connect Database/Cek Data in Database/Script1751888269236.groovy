@@ -17,27 +17,28 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.database.PostgreDBUtils as DBUtils
+import com.kms.katalon.core.util.KeywordUtil
 
 try {
     // Coba koneksi ke database
     DBUtils.connectDB('localhost', '5432', 'MyDatabase', 'postgres', 'P@ssw0rd')
-    println "Koneksi berhasil! Password benar."
+    KeywordUtil.logInfo "Koneksi berhasil! Password benar."
 
     // Query SELECT (contoh cek user)
     def rs = DBUtils.executeQuery("SELECT * FROM users WHERE name = 'Alice'")
     if (rs.next()) {
-		println("Nama : " + rs.getString('name') + " Berhasil Ditemukan")
+		KeywordUtil.logInfo("Nama : " + rs.getString('name') + " Berhasil Ditemukan")
 	} else {
-        println "Data tidak ditemukan"
+        KeywordUtil.logInfo "Data tidak ditemukan"
     }
 
 } catch (Exception e) {
-    println "Koneksi gagal! Password salah atau DB tidak bisa diakses."
-    println e.message
+    KeywordUtil.logInfo "Koneksi gagal! Password salah atau DB tidak bisa diakses."
+    KeywordUtil.logInfo e.message
 } finally {
     try {
         DBUtils.closeDB()
     } catch (Exception e) {
-        println "Tidak bisa menutup koneksi: " + e.message
+        KeywordUtil.logInfo "Tidak bisa menutup koneksi: " + e.message
     }
 }

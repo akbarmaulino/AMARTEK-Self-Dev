@@ -17,6 +17,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.database.PostgreDBUtils as DBUtils
+import com.kms.katalon.core.util.KeywordUtil
 
 // Step 1️⃣: Register User Baru via UI
 WebUI.openBrowser('')
@@ -25,19 +26,19 @@ WebUI.setText(findTestObject('Object Repository/input_email'), 'userbaru@mail.co
 WebUI.setText(findTestObject('Object Repository/input_password'), 'password123')
 WebUI.click(findTestObject('Object Repository/btn_register'))
 WebUI.verifyTextPresent('Registrasi berhasil', false)
-println "✅ Sukses daftar user baru di UI"
+KeywordUtil.logInfo "✅ Sukses daftar user baru di UI"
 
 // Step 2️⃣: Cek Database PostgreSQL
 try {
 	DBUtils.connectDB('localhost', '5432', 'MyDatabase', 'postgres', 'P@ssw0rd')
 	def rs = DBUtils.executeQuery("SELECT * FROM users WHERE email = 'userbaru@mail.com'")
 	if (rs.next()) {
-		println "✅ User ditemukan di database: ${rs.getString('email')}"
+		KeywordUtil.logInfo "✅ User ditemukan di database: ${rs.getString('email')}"
 	} else {
-		println "❌ User TIDAK ditemukan di database!"
+		KeywordUtil.logInfo "❌ User TIDAK ditemukan di database!"
 	}
 } catch (Exception e) {
-	println "❌ ERROR DB: " + e.message
+	KeywordUtil.logInfo "❌ ERROR DB: " + e.message
 } finally {
 	DBUtils.closeDB()
 }
@@ -46,7 +47,7 @@ try {
 def response = WS.sendRequest(findTestObject('Object Repository/API/GetUser', [('email') : 'userbaru@mail.com']))
 WS.verifyResponseStatusCode(response, 200)
 WS.verifyElementPropertyValue(response, 'email', 'userbaru@mail.com')
-println "✅ Data user valid lewat API"
+KeywordUtil.logInfo "✅ Data user valid lewat API"
 
 // Step 4️⃣: Tutup Browser
 WebUI.closeBrowser()

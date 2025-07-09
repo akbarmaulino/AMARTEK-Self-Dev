@@ -16,7 +16,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-
+import com.kms.katalon.core.util.KeywordUtil
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Login Page/field_Username'), GlobalVariable.username)
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Orange HRM/Login Page/field_Password'), GlobalVariable.password)
@@ -29,8 +29,8 @@ String currentUrl = WebUI.getUrl()
 
 
 if (currentUrl.contains('/dashboard/index')) {
-    println('Sukses Masuk ke Main Page')
+    KeywordUtil.logInfo('Sukses Masuk ke Main Page')
 } else {
-    println('Gagal Masuk ke Main Page / Gagal Login')
+    KeywordUtil.logInfo('Gagal Masuk ke Main Page / Gagal Login')
 }
 

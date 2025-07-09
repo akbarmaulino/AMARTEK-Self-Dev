@@ -35,7 +35,7 @@ import org.openqa.selenium.JavascriptExecutor
 //// Cari semua element <img>
 //List<WebElement> imagesList = driver.findElements(By.tagName('img'))
 //
-//println("Total Gambar Ditemukan: " + imagesList.size())
+//KeywordUtil.logInfo("Total Gambar Ditemukan: " + imagesList.size())
 //
 //int brokenImageCount = 0
 //
@@ -45,12 +45,12 @@ import org.openqa.selenium.JavascriptExecutor
 //		"return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", img);
 //	
 //	if (!imageDisplayed) {
-//		println("Broken Image Found: " + img.getAttribute("src"))
+//		KeywordUtil.logInfo("Broken Image Found: " + img.getAttribute("src"))
 //		brokenImageCount++
 //	}
 //}
 //
-//println("Total Broken Images: " + brokenImageCount)
+//KeywordUtil.logInfo("Total Broken Images: " + brokenImageCount)
 //
 //// Tutup browser
 //WebUI.closeBrowser()
@@ -61,6 +61,7 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.By
 import org.openqa.selenium.JavascriptExecutor
 import com.kms.katalon.core.webui.driver.DriverFactory
+import com.kms.katalon.core.util.KeywordUtil
 
 // Buka halaman
 WebUI.openBrowser('')
@@ -76,9 +77,9 @@ for (WebElement img : images) {
 		"return arguments[0].complete && arguments[0].naturalWidth > 0;", img);
 	
 	if (isImageOk) {
-		println("Gambar OK: " + img.getAttribute('src'))
+		KeywordUtil.logInfo("Gambar OK: " + img.getAttribute('src'))
 	} else {
-		println("Gambar BROKEN: " + img.getAttribute('src'))
+		KeywordUtil.logInfo("Gambar BROKEN: " + img.getAttribute('src'))
 	}
 }
 

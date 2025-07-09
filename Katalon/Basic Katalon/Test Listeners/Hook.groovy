@@ -22,6 +22,7 @@ import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 
+
 class Hook {
 
 	@BeforeTestCase
@@ -31,6 +32,7 @@ class Hook {
 		WebUI.navigateToUrl(GlobalVariable.baseURL)
 		
 		WebUI.maximizeWindow()
+	
 	}
 	
 	@AfterTestCase

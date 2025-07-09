@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>select_Name</name>
+   <name>row_Table</name>
    <tag></tag>
-   <elementGuidId>2ff4a400-c8b9-434a-8eab-d1ac625c21c5</elementGuidId>
+   <elementGuidId>74ac21e0-b7da-49ed-a1ad-462e85001cb0</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@role='option' and .//span[text()='Test  User']]&#xd;
+         <value>//div[@role='row']&#xd;
 </value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
