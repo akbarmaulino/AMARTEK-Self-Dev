@@ -23,6 +23,8 @@ import org.openqa.selenium.By as By
 
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Login Page/field_Username'), GlobalVariable.username)
 
+WebUI.setText(findTestObject('Orange HRM/Admin Menu/Job Title/button_Save'), GlobalVariable.username)
+
 WebUI.setEncryptedText(findTestObject('Object Repository/Orange HRM/Login Page/field_Password'), GlobalVariable.password)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Login Page/button_Login'))
@@ -47,32 +49,34 @@ WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/button_Save'))
 
-if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/alert_SuccessAddNewJob'),
-	10)) {
-	KeywordUtil.logInfo('Pesan Berhasil untuk Daftar User Baru Berhasil')
+if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/alert_SuccessAddNewJob'), 
+    10)) {
+    KeywordUtil.logInfo('Pesan Berhasil untuk Daftar User Baru Berhasil')
 
-	String successMessage = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/alert_Success Create'))
+    String successMessage = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/alert_Success Create'))
 
-	KeywordUtil.logInfo('Pesan Success: ' + successMessage)
+    KeywordUtil.logInfo('Pesan Success: ' + successMessage)
 
-	WebUI.takeScreenshot()
+    WebUI.takeScreenshot()
 } else {
-	KeywordUtil.logInfo('Pesan Berhasil tidak Muncul')
+    KeywordUtil.logInfo('Pesan Berhasil tidak Muncul')
 }
 
-List<WebElement> rows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/table_All Rows'),
-	10)
+List<WebElement> rows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/table_All Rows'), 
+    10)
 
 for (int i = 0; i < rows.size(); i++) {
-	String JobTitle = (rows[i]).findElement(By.xpath('.//div[@role=\'cell\'][2]//div')).getText()
+    String JobTitle = rows[i].findElement(By.xpath(".//div[@role='cell'][2]//div")).getText()
 
-	if (JobTitle.equals(GlobalVariable.JobTitle)) {
-		KeywordUtil.logInfo("Baris dengan Username '${GlobalVariable.JobTitle}' ditemukan di baris ke-${i + 1}")
-		WebElement targetCell = rows[i].findElement(By.xpath(".//div[@role='cell'][2]//div"))
-		CustomKeywords.'Scroll.scrollToWebElement'(targetCell)
+    if (JobTitle.equals(GlobalVariable.JobTitle)) {
+        KeywordUtil.logInfo("Baris dengan Job Title '${GlobalVariable.JobTitle}' ditemukan di baris ke-${i + 1}")
 
-		break
-	}
+        WebElement targetCell = rows[i].findElement(By.xpath(".//div[@role='cell'][2]//div"))
 
+        CustomKeywords.'Scroll.scrollToWebElement'(targetCell)
+
+        break  // Stop setelah ketemu
+    }
 }
+
 

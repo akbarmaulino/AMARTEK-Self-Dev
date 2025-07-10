@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC01 - User Want to Search With Existing Data</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c5ed4743-76c1-46f3-9e82-ed4b0542a59a</testCaseGuid>
+</TestCaseEntity>

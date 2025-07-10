@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC02 - User Want To Search with Non Existing Data</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b0b0daac-f4f9-4ec8-af5e-8909bae0329d</testCaseGuid>
+</TestCaseEntity>

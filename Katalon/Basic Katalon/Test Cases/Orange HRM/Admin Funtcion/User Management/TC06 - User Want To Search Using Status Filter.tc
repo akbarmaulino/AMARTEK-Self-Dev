@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC06 - User Want To Search Using Status Filter</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>2d994c5a-6cc5-4e99-ab12-aa460c285b68</testCaseGuid>
+</TestCaseEntity>

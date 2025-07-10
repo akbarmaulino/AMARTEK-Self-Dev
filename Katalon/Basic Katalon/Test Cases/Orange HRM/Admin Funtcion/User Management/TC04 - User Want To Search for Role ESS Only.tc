@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC04 - User Want To Search for Role ESS Only</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d33152ca-12d1-4c23-a747-66599e43a31b</testCaseGuid>
+</TestCaseEntity>

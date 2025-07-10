@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC09 - User Want To Check All Box Using Check All</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b1038ef0-71bd-4e17-885c-d032e6bf8a12</testCaseGuid>
+</TestCaseEntity>

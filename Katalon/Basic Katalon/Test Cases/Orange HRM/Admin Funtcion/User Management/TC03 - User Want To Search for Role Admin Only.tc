@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>User Want to Search Valid Name</name>
+   <name>TC03 - User Want To Search for Role Admin Only</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>c5ed4743-76c1-46f3-9e82-ed4b0542a59a</testCaseGuid>
+   <testCaseGuid>4b35339a-80f4-4039-b212-22036a13c16f</testCaseGuid>
 </TestCaseEntity>

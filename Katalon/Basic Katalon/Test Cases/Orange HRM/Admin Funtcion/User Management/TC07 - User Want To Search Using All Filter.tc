@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC07 - User Want To Search Using All Filter</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d20b49a0-a3ad-4004-92e8-72719afafd4c</testCaseGuid>
+</TestCaseEntity>

@@ -20,7 +20,7 @@ import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.By
 import com.kms.katalon.core.util.KeywordUtil
-import com.kms.katalon.core.util.KeywordUtil
+
 // ========== SCRIPT KAMU YANG SUDAH ADA ==========
 
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Login Page/field_Username'), GlobalVariable.username)

@@ -29,7 +29,7 @@
       <guid>a23e4a41-29d6-4de3-ac9a-e75088848245</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/User Management/User Want to Search Valid Name</testCaseId>
+      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/User Management/TC01 - User Want to Search With Existing Data</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
 </TestSuiteEntity>
