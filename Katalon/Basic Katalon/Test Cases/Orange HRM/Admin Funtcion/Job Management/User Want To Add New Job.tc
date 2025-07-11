@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description></description>
-   <name>User Want To Add New Job</name>
-   <tag></tag>
-   <comment></comment>
-   <recordOption>OTHER</recordOption>
-   <testCaseGuid>a06d4872-0dbf-471f-a6f9-2dc754d40d62</testCaseGuid>
-</TestCaseEntity>

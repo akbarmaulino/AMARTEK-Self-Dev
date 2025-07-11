@@ -31,18 +31,18 @@ WebUI.delay(5)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin'))
 
-WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), 10)
+WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), 10)
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), "a")
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), "a")
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/button_Search'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/button_Search'))
 
-String successMessage = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/alert_Not Found Data'))
+String successMessage = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Not Found Data'))
 
 String cleanedMessage = CustomKeywords.'helper.cleanMessage'(successMessage)
 String expectedMessage = CustomKeywords.'helper.cleanMessage'(GlobalVariable.messageNotFound)
 
-if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/alert_Not Found Data'), 10)) {
+if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Not Found Data'), 10)) {
 	if (cleanedMessage.equals(expectedMessage)) {
 		KeywordUtil.logInfo("Pesan cocok: '${cleanedMessage}'")
 	} else {

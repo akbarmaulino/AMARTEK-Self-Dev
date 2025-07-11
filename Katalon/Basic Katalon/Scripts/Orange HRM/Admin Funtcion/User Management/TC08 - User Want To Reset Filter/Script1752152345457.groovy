@@ -28,13 +28,13 @@ WebUI.delay(5)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin'))
 
-WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), 10)
+WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), 10)
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), GlobalVariable.validUsername)
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), GlobalVariable.validUsername)
 
-String Username = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'))
+String Username = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'))
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/button_Reset'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/button_Reset'))
 
 WebUI.delay(3)
 

@@ -31,15 +31,15 @@ WebUI.delay(5)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin'))
 
-WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), 10)
+WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), 10)
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Employee Name'), GlobalVariable.employeeName)
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Employee Name'), GlobalVariable.employeeName)
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/select_Name'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/select_Name'))
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/button_Search'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/button_Search'))
 
-List<WebElement> filteredRows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/table_All Rows'), 
+List<WebElement> filteredRows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/table_All Rows'), 
     10)
 
 KeywordUtil.logInfo('Jumlah baris hasil search: ' + filteredRows.size())

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>User Want To Edit Job Title</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>0fc5e8a2-77ad-4c89-985a-529f4e3cda20</testCaseGuid>
+</TestCaseEntity>

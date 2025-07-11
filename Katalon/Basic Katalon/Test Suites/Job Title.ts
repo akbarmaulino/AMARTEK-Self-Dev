@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>Admin Function</name>
+   <name>Job Title</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,26 +10,26 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>false</rerunImmediately>
-   <testSuiteGuid>15ab5ddb-afbd-4e60-8016-514c8ae0a4b8</testSuiteGuid>
+   <testSuiteGuid>3b09446d-0270-4e95-9f6e-bc8e609a34d4</testSuiteGuid>
    <testCaseLink>
-      <guid>897b31b6-1df5-400f-90e7-b00ddb27e5ff</guid>
+      <guid>e4dd4a5b-6e04-49cb-ac6a-b4702f31daa5</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/User Management/TC12 - User Want to Delete User</testCaseId>
+      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/Job Title/User Want To Add New Job Title</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>93c90e81-1639-4b40-b4f7-6b2ecfa00377</guid>
+      <guid>f8605186-4235-49df-a2f4-27c4dcd1c259</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/User Management/TC11 - User Want to Add New User</testCaseId>
+      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/Job Title/User Want To Edit Job Title</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
    <testCaseLink>
-      <guid>a23e4a41-29d6-4de3-ac9a-e75088848245</guid>
+      <guid>f86cc3c6-660b-4890-863f-f10b71b055f1</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/User Management/TC01 - User Want to Search With Existing Data</testCaseId>
+      <testCaseId>Test Cases/Orange HRM/Admin Funtcion/Job Title/User Want To Delete Job Title</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
    </testCaseLink>
 </TestSuiteEntity>

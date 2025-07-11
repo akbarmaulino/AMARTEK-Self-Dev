@@ -31,16 +31,16 @@ WebUI.delay(5)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin'))
 
-WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), 
+WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), 
     10)
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_User Role'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_User Role'))
 
-WebUI.click(findTestObject('Orange HRM/Admin Menu/User Management/select_Role ESS'))
+WebUI.click(findTestObject('Orange HRM/Admin Menu/User Management/Main Menu/select_Role ESS'))
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/button_Search'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/button_Search'))
 
-List<WebElement> filteredRows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/table_All Rows'), 
+List<WebElement> filteredRows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/table_All Rows'), 
     10)
 
 KeywordUtil.logInfo('Jumlah baris hasil search: ' + filteredRows.size())

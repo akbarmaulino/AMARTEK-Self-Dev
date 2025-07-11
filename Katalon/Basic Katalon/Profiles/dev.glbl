@@ -83,7 +83,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'ValorantQA'</initValue>
+      <initValue>'FMLName1'</initValue>
       <name>validSearchName</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
@@ -99,6 +99,20 @@
       <description></description>
       <initValue>'Shahbaz'</initValue>
       <name>employeeName</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'ValorantQA Edit'</initValue>
+      <name>validSearchNameEdit</name>
+      <protected>false</protected>
+      <valueType>STRING</valueType>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'QAE'</initValue>
+      <name>jobTitleEdit</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>

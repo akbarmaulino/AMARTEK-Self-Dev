@@ -36,13 +36,13 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/check all box/checkbox_
 
 // Ambil semua checkbox row yang tercentang
 List<WebElement> rowCheckboxes = WebUiCommonHelper.findWebElements(
-	findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/checkbox_Checkbox'),
+	findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/checkbox_Checkbox'),
 	10
 )
 
 // Ambil semua row di tabel
 List<WebElement> totalRows = WebUiCommonHelper.findWebElements(
-	findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/row_Table'),
+	findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/row_Table'),
 	10
 )
 

@@ -33,7 +33,7 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin')
 
 // Ambil semua row di tabel
 List<WebElement> totalRows = WebUiCommonHelper.findWebElements(
-	findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/row_Table'),
+	findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/row_Table'),
 	10
 )
 

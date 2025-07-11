@@ -31,25 +31,25 @@ WebUI.delay(5)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin'))
 
-WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), 10)
+WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), 10)
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Search Username'), GlobalVariable.validSearchName)
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), GlobalVariable.validSearchNameEdit)
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_User Role'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_User Role'))
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/select_Role Admin'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/select_Role Admin'))
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_Employee Name'), 'lala ')
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Employee Name'), 'lala ')
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/select_Name'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/select_Name'))
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/field_User Status'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_User Status'))
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/select_Status Enabled'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/select_Status Enabled'))
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/button_Search'))
+WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/button_Search'))
 
-List<WebElement> rows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/table_All Rows'), 10)
+List<WebElement> rows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/table_All Rows'), 10)
 
 KeywordUtil.logInfo("=== Validasi Berdasarkan Username Tertentu ===")
 for (int i = 0; i < rows.size(); i++) {
