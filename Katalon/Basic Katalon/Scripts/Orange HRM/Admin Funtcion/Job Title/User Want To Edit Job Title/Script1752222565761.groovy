@@ -55,7 +55,9 @@ for (WebElement row : rowsEdit) {
 	}
 }
 WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/Edit Page/field_Job Title'))
+
 WebUI.sendKeys(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/Edit Page/field_Job Title'), Keys.chord(Keys.CONTROL, 'a'))
+
 WebUI.sendKeys(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/Edit Page/field_Job Title'), Keys.chord(Keys.BACK_SPACE))
 WebUI.sendKeys(findTestObject('Object Repository/Orange HRM/Admin Menu/Job Title/Edit Page/field_Job Title'), Keys.chord(Keys.TAB))
 

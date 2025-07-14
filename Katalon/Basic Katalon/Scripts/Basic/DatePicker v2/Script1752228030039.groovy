@@ -17,3 +17,28 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+WebUI.scrollToElement(findTestObject("Object Repository/Basic/Datepicker/DatePicker2,4"), 10)
+
+// Isi bulan
+WebUI.click(findTestObject('Basic/Datepicker/field_month Desktop'))
+
+WebUI.sendKeys(findTestObject('Basic/Datepicker/field_month Desktop'), '07')
+
+// Isi hari
+WebUI.click(findTestObject('Basic/Datepicker/field_day Desktop'))
+
+WebUI.sendKeys(findTestObject('Basic/Datepicker/field_day Desktop'), '11')
+
+// Isi tahun
+WebUI.click(findTestObject('Basic/Datepicker/field_year Desktop'))
+
+WebUI.sendKeys(findTestObject('Basic/Datepicker/field_year Desktop'), '2025')
+
+// Ambil value dari input (hasil akhir setelah isi)
+String dateValue = WebUI.getAttribute(findTestObject('Basic/Datepicker/field_Value Desktop'), 'value')
+
+println("Tanggal dipilih: $dateValue")
+
+assert dateValue == '07/11/2025' : "Tanggal tidak sesuai! Actual: $dateValue"
+
+

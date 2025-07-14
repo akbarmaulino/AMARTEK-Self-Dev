@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>LoginSpyObject</name>
+   <name>DatePicker</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>009191a2-c1b0-40b5-b9cb-84f39db22603</testCaseGuid>
+   <testCaseGuid>8c9c773c-0207-4b0b-bb83-0a8ec4671bb8</testCaseGuid>
 </TestCaseEntity>

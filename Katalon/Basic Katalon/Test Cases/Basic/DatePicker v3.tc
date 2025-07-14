@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>User Want To Login With Valid Credential - Copy</name>
+   <name>DatePicker v3</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>1c1dc272-832c-47dd-b081-7fe10f0ccbf5</testCaseGuid>
+   <testCaseGuid>b2ffd270-de7a-486e-aaf0-b8c02684d095</testCaseGuid>
 </TestCaseEntity>

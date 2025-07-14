@@ -16,4 +16,21 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.testobject.ConditionType
+import com.kms.katalon.core.testobject.TestObject
 
+
+WebUI.scrollToElement(findTestObject("Object Repository/Basic/Datepicker/DatePicker2,4"), 10)
+
+CustomKeywords.'DatePicker.selectStaticDateCombined'('08-06-2001')
+
+String selectedDate = CustomKeywords.'DatePicker.getStaticDatePickerValue'()
+WebUI.comment("Tanggal dipilih: $selectedDate")
+
+if (selectedDate == GlobalVariable.tanggal) {
+    WebUI.comment("Tanggal sesuai: $selectedDate")
+} else {
+    WebUI.comment("Tanggal TIDAK SESUAI, ditemukan: $selectedDate vs expected: ${GlobalVariable.tanggal}")
+}
+
+WebUI.delay(5)
