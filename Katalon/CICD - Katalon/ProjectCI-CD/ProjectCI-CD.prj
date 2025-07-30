@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
    <description></description>
-   <name>Basic Katalon</name>
+   <name>ProjectCI-CD</name>
    <tag></tag>
-   <UUID>70728411-db60-4db0-9d67-b0553c89f5ae</UUID>
-   <createdEdition>FREE</createdEdition>
-   <createdVersion>10.2.1</createdVersion>
+   <UUID>4bfed656-2ee7-4f4c-b950-93c9448e76a9</UUID>
+   <createdEdition>ENTERPRISE</createdEdition>
+   <createdVersion>10.2.4</createdVersion>
    <freeLicense>false</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
-   <modifiedEdition>FREE</modifiedEdition>
-   <modifiedVersion>10.2.1</modifiedVersion>
+   <modifiedEdition>ENTERPRISE</modifiedEdition>
+   <modifiedVersion>10.2.4</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>C:\File Kerja\QA\Self Development Eagle Team\Katalon\Basic Katalon\Basic Katalon.prj</projectFileLocation>
+   <projectFileLocation>C:\File Kerja\QA\Self Development Eagle Team\Katalon\CICD - Katalon\ProjectCI-CD\ProjectCI-CD.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>
