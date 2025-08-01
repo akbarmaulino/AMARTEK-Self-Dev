@@ -20,6 +20,8 @@ import com.kms.katalon.core.webui.common.WebUiCommonHelper as WebUiCommonHelper
 import org.openqa.selenium.WebElement as WebElement
 import org.openqa.selenium.By as By
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
 
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Login Page/field_Username'), GlobalVariable.username)
 
@@ -37,9 +39,18 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Managem
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/select_Role Admin'))
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_Employee Name'), 'Test')
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_Employee Name'), GlobalVariable.employeeName)
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/select_Name'))
+
+String xpath_select_name = "//div[@role='option' and .//span[text()='" + GlobalVariable.employeeName + "']]"
+
+TestObject select_name = new TestObject()
+select_name.addProperty("xpath", ConditionType.EQUALS, xpath_select_name)
+
+WebUI.click(select_name)
+
+
+//WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/select_Name'))
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_User Status'))
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC13 - User Want To Edit User</name>
+   <name>TC014 - User Want to Delete User with Add</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>14778fe8-4cd1-4792-987f-2f7dfc74ab44</testCaseGuid>
+   <testCaseGuid>e6144c91-654d-44f1-81b6-1ebc61026cce</testCaseGuid>
 </TestCaseEntity>

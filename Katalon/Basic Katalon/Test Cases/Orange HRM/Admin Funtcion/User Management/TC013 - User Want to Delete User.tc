@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC09 - User Want To Check All Box Using Check All</name>
+   <name>TC013 - User Want to Delete User</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>b1038ef0-71bd-4e17-885c-d032e6bf8a12</testCaseGuid>
+   <testCaseGuid>88f63d66-7ad0-4e92-bf5c-9fa403d1a056</testCaseGuid>
 </TestCaseEntity>

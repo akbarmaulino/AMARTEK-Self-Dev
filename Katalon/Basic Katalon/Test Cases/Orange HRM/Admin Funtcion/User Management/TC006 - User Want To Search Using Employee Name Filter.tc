@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC02 - User Want To Search with Non Existing Data</name>
+   <name>TC006 - User Want To Search Using Employee Name Filter</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>b0b0daac-f4f9-4ec8-af5e-8909bae0329d</testCaseGuid>
+   <testCaseGuid>29ec1853-6630-4fbc-be65-0b213b308df0</testCaseGuid>
 </TestCaseEntity>

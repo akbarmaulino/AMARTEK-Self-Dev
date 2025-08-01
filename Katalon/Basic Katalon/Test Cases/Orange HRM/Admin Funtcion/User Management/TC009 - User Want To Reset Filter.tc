@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC03 - User Want To Search for Role Admin Only</name>
+   <name>TC009 - User Want To Reset Filter</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>4b35339a-80f4-4039-b212-22036a13c16f</testCaseGuid>
+   <testCaseGuid>ba3c7874-ff61-433c-9070-4fdda37228fd</testCaseGuid>
 </TestCaseEntity>

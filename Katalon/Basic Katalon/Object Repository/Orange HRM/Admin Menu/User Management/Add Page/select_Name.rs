@@ -6,12 +6,12 @@
    <elementGuidId>2ff4a400-c8b9-434a-8eab-d1ac625c21c5</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//div[@role='option' and .//span[text()='Orange  Test']]&#xd;
+</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@role='option' and .//span[text()='Test  User']]&#xd;
-</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -97,7 +97,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Shahbaz'</initValue>
+      <initValue>'John M Doe'</initValue>
       <name>employeeName</name>
       <protected>false</protected>
       <valueType>STRING</valueType>

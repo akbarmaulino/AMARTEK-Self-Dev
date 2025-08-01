@@ -27,6 +27,7 @@ import com.kms.katalon.core.util.KeywordUtil
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.WebDriver
+import com.kms.katalon.core.testobject.ConditionType
 
 // Login
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Login Page/field_Username'), GlobalVariable.username)
@@ -36,21 +37,6 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/Login Page/button_Login
 WebUI.delay(5)
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin'))
 
-// Add User
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/button_Add'))
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_User Role'))
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/select_Role Admin'))
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_Employee Name'), 'Test')
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/select_Name'))
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_User Status'))
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/select_Status Enabled'))
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_username'), GlobalVariable.addUsername)
-WebUI.setEncryptedText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_Password'), 'iFGeFYmXIrUhQZHvW7P22w==')
-WebUI.setEncryptedText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_Confrim Password'), 'iFGeFYmXIrUhQZHvW7P22w==')
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/button_Save'))
-
-WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), 10)
-WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/row_Table'), 10)
 
 WebDriver driver = DriverFactory.getWebDriver()
 
@@ -58,10 +44,10 @@ WebDriver driver = DriverFactory.getWebDriver()
 List<WebElement> rows = driver.findElements(By.xpath("//div[@role='row']"))
 for (WebElement row : rows) {
 	try {
-		row.findElement(By.xpath(".//div[@role='cell']//div[text()='${GlobalVariable.addUsername}']"))
+		row.findElement(By.xpath(".//div[@role='cell']//div[text()='${GlobalVariable.validSearchNameEdit}']"))
 		WebElement deleteButton = row.findElement(By.xpath(".//i[contains(@class, 'bi-trash')]/ancestor::button"))
 		deleteButton.click()
-		KeywordUtil.logInfo("✅ Delete button clicked for user: ${GlobalVariable.addUsername}")
+		KeywordUtil.logInfo("✅ Delete button clicked for user: ${GlobalVariable.validSearchNameEdit}")
 		break
 	} catch (Exception e) {
 		// Username tidak ditemukan di row ini, lanjut ke row berikutnya
@@ -78,11 +64,11 @@ if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admi
 	WebUI.takeScreenshot()
 
 	// Search ulang username untuk validasi
-	WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), GlobalVariable.addUsername)
+	WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), GlobalVariable.validSearchNameEdit)
 	WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/button_Search'))
 
 	if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Not Found Data'), 10)) {
-		KeywordUtil.logInfo("✅ User '${GlobalVariable.addUsername}' berhasil dihapus. 'No Records Found' muncul.")
+		KeywordUtil.logInfo("✅ User '${GlobalVariable.validSearchNameEdit}' berhasil dihapus. 'No Records Found' muncul.")
 		WebUI.takeScreenshot()
 	} else {
 		KeywordUtil.logInfo("⚠️ 'No Records Found' tidak muncul, cek langsung di tabel...")
@@ -100,9 +86,9 @@ if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admi
 		}
 
 		if (!userFound) {
-			KeywordUtil.logInfo("✅ User '${GlobalVariable.addUsername}' tidak ditemukan di tabel. Berhasil dihapus.")
+			KeywordUtil.logInfo("✅ User '${GlobalVariable.validSearchNameEdit}' tidak ditemukan di tabel. Berhasil dihapus.")
 		} else {
-			KeywordUtil.logInfo("❌ User '${GlobalVariable.addUsername}' masih ada di tabel. Gagal dihapus.")
+			KeywordUtil.logInfo("❌ User '${GlobalVariable.validSearchNameEdit}' masih ada di tabel. Gagal dihapus.")
 		}
 	}
 } else {

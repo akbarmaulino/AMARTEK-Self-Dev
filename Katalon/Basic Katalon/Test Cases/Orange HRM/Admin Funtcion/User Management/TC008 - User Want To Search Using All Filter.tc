@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC01 - User Want to Search With Existing Data</name>
+   <name>TC008 - User Want To Search Using All Filter</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>c5ed4743-76c1-46f3-9e82-ed4b0542a59a</testCaseGuid>
+   <testCaseGuid>d20b49a0-a3ad-4004-92e8-72719afafd4c</testCaseGuid>
 </TestCaseEntity>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC04 - User Want To Search for Role ESS Only</name>
+   <name>TC012 - User Want To Edit User</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>d33152ca-12d1-4c23-a747-66599e43a31b</testCaseGuid>
+   <testCaseGuid>14778fe8-4cd1-4792-987f-2f7dfc74ab44</testCaseGuid>
 </TestCaseEntity>

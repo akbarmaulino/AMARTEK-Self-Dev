@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC11 - User Want to Add New User</name>
+   <name>TC010 - User Want To Check All Box Using Check All</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>e3717837-ab6c-4259-beac-ba80cae1fdcf</testCaseGuid>
+   <testCaseGuid>b1038ef0-71bd-4e17-885c-d032e6bf8a12</testCaseGuid>
 </TestCaseEntity>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC05 - User Want To Search Using Employee Name Filter</name>
+   <name>TC004 - User Want To Search for Role Admin Only</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>29ec1853-6630-4fbc-be65-0b213b308df0</testCaseGuid>
+   <testCaseGuid>4b35339a-80f4-4039-b212-22036a13c16f</testCaseGuid>
 </TestCaseEntity>

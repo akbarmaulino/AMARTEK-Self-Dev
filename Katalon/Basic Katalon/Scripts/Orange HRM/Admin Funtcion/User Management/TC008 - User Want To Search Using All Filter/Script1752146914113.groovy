@@ -20,7 +20,7 @@ import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.By
-
+import com.kms.katalon.core.testobject.ConditionType
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Login Page/field_Username'), GlobalVariable.username)
 
 WebUI.setEncryptedText(findTestObject('Object Repository/Orange HRM/Login Page/field_Password'), GlobalVariable.password)
@@ -33,15 +33,21 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_Admin')
 
 WebUI.waitForElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), 10)
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), GlobalVariable.validSearchNameEdit)
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), GlobalVariable.addUsername)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_User Role'))
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/select_Role Admin'))
 
-WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Employee Name'), 'lala ')
+WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Employee Name'), GlobalVariable.employeeName)
 
-WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/select_Name'))
+//WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/select_Name'))
+String xpath_select_name = "//div[@role='option' and .//span[text()='" + GlobalVariable.employeeName + "']]"
+
+TestObject select_name = new TestObject()
+select_name.addProperty("xpath", ConditionType.EQUALS, xpath_select_name)
+
+WebUI.click(select_name)
 
 WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_User Status'))
 

@@ -39,10 +39,10 @@ WebDriver driver = DriverFactory.getWebDriver()
 List<WebElement> rowsEdit = driver.findElements(By.xpath("//div[@role='row']"))
 for (WebElement row : rowsEdit) {
 	try {
-		row.findElement(By.xpath(".//div[@role='cell']//div[text()='${GlobalVariable.validSearchName}']"))
+		row.findElement(By.xpath(".//div[@role='cell']//div[text()='${GlobalVariable.addUsername}']"))
 		WebElement deleteButton = row.findElement(By.xpath(".//i[contains(@class, 'bi-pencil-fill')]/ancestor::button"))
 		deleteButton.click()
-		KeywordUtil.logInfo("Edit button clicked for user: ${GlobalVariable.validSearchName}")
+		KeywordUtil.logInfo("Edit button clicked for user: ${GlobalVariable.addUsername}")
 		break
 	} catch (Exception e) {
 	}
