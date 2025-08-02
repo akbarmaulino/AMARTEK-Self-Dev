@@ -21,24 +21,42 @@ import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
-
+import com.kms.katalon.core.annotation.TearDownIfFailed
+import helper.ScreenshotUtils
 
 class Hook {
+
+
 
 	@BeforeTestCase
 	def BeforeTestCase(TestCaseContext testCaseContext) {
 		WebUI.openBrowser('')
-		
 		WebUI.navigateToUrl(GlobalVariable.baseURL)
-		
 		WebUI.maximizeWindow()
-	
 	}
-	
+
 	@AfterTestCase
-	def AfterTestCase(TestCaseContext testCaseContext) {
-		WebUI.takeScreenshot()
+	def afterTestCase(TestCaseContext testCaseContext) {
+		String status = testCaseContext.getTestCaseStatus()
+		String tcName = testCaseContext.getTestCaseId().replaceAll("[^a-zA-Z0-9_\\-]", "_")
+		String filename = (status == "FAILED" ? "FAILED_" : "") + tcName
+
+		// Screenshot hanya sekali
+		CustomKeywords.'helper.ScreenshotUtils.safeScreenshot'(filename)
+
 		WebUI.closeBrowser()
 	}
+	
+	// HAPUS ATAU NONAKTIFKAN
+	// @TearDownIfFailed
+	// def takeScreenshotIfFailed() {
+	// 	ScreenshotUtils.safeScreenshot("FAILED_" + java.util.UUID.randomUUID().toString())
+	// }
+
+
+
+
+
+
 
 }

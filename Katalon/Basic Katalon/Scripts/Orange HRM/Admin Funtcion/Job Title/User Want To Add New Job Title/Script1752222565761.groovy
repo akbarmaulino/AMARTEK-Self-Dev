@@ -55,7 +55,7 @@ if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admi
 
     KeywordUtil.logInfo('Pesan Success: ' + successMessage)
 
-    WebUI.takeScreenshot()
+    CustomKeywords.'helper.ScreenshotUtils.safeScreenshot'()
 } else {
     KeywordUtil.logInfo('Pesan Berhasil tidak Muncul')
 }
@@ -71,7 +71,7 @@ for (int i = 0; i < rows.size(); i++) {
 
         WebElement targetCell = rows[i].findElement(By.xpath(".//div[@role='cell'][2]//div"))
 
-        CustomKeywords.'Scroll.scrollToWebElement'(targetCell)
+        CustomKeywords.'helper.Scroll.scrollToWebElement'(targetCell)
 
         break  // Stop setelah ketemu
     }

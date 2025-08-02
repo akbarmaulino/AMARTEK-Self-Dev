@@ -61,7 +61,8 @@ if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admi
 	KeywordUtil.logInfo('✅ Pesan Berhasil untuk Hapus User Berhasil')
 	String successDelete = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Success Delete'))
 	KeywordUtil.logInfo("Pesan Success Delete: ${successDelete}")
-	WebUI.takeScreenshot()
+	CustomKeywords.'helper.ScreenshotUtils.safeScreenshot'()
+
 	
 	List<WebElement> rows = WebUiCommonHelper.findWebElements(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/table_All Rows'), 10)
 	

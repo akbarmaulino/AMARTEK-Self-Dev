@@ -83,7 +83,7 @@ if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admi
 	KeywordUtil.logInfo('✅ Pesan Berhasil untuk Hapus User Berhasil')
 	String successDelete = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Success Delete'))
 	KeywordUtil.logInfo("Pesan Success Delete: ${successDelete}")
-	WebUI.takeScreenshot()
+	CustomKeywords.'helper.ScreenshotUtils.safeScreenshot'()
 
 	// Search ulang username untuk validasi
 	WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/field_Search Username'), GlobalVariable.addUsername)
@@ -91,7 +91,7 @@ if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admi
 
 	if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Not Found Data'), 10)) {
 		KeywordUtil.logInfo("✅ User '${GlobalVariable.addUsername}' berhasil dihapus. 'No Records Found' muncul.")
-		WebUI.takeScreenshot()
+		CustomKeywords.'helper.ScreenshotUtils.safeScreenshot'()
 	} else {
 		KeywordUtil.logInfo("⚠️ 'No Records Found' tidak muncul, cek langsung di tabel...")
 		List<WebElement> searchRows = driver.findElements(By.xpath("//div[@role='row']"))

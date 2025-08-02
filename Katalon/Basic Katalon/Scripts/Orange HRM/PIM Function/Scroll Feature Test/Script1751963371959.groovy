@@ -27,8 +27,8 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/Login Page/button_Login
 // Klik menu PIM
 WebUI.click(findTestObject('Object Repository/Orange HRM/Sidebar/sidebar_PIM'))
 
-// Scroll ke button nextPage
-CustomKeywords.'Scroll.scrollToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_nextPage'), 10)
+// helper.Scroll ke button nextPage
+CustomKeywords.'helper.Scroll.scrollToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_nextPage'), 10)
 
-// Scroll ke button Search (scroll up)
-CustomKeywords.'Scroll.scrollUpToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_Search'), 10)
+// helper.Scroll ke button Search (scroll up)
+CustomKeywords.'helper.Scroll.scrollUpToTestObject'(findTestObject('Object Repository/Orange HRM/PIM Menu/button_Search'), 10)

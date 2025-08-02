@@ -1,3 +1,4 @@
+package helper
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
@@ -26,30 +27,49 @@ import java.awt.image.BufferedImage
 import java.io.File
 
 public class ScreenshotUtils {
-	@Keyword
-	static void safeScreenshot(String filePath = null) {
-		try {
-			if (filePath == null || filePath.trim() == "") {
-				long timestamp = System.currentTimeMillis()
-				String reportDir = RunConfiguration.getReportFolder()
-				filePath = "${reportDir}/screenshot_${timestamp}.png"
-			}
 
+	@Keyword
+	static void safeScreenshot(String identifier = null) {
+		try {
+			long timestamp = System.currentTimeMillis()
+	
+			String reportDir = RunConfiguration.getReportFolder()
+			String screenshotDir = reportDir + "/screenshots/"
+			new File(screenshotDir).mkdirs()
+	
+			if (identifier == null || identifier.trim() == "") {
+				identifier = "capture"
+			}
+	
+			String safeName = identifier.replaceAll("[^a-zA-Z0-9_\\-]", "_")
+			String filePath = "${screenshotDir}${safeName}_${timestamp}.png"
+			File file = new File(filePath)
+	
 			boolean success = WebUI.takeScreenshot(filePath)
+	
 			if (success) {
-				File file = new File(filePath)
-				BufferedImage img = ImageIO.read(file)
-				if (img != null) {
-					ImageIO.write(img, "png", file) // Rewrite dengan format valid
-					KeywordUtil.logInfo("✅ Screenshot aman disimpan: ${filePath}")
+				// Cek validitas file tanpa ImageIO
+				int retry = 0
+				while ((!file.exists() || file.length() < 2048) && retry < 10) {
+					Thread.sleep(300)
+					retry++
+				}
+	
+				if (file.exists() && file.length() >= 2048) {
+					KeywordUtil.markPassed("📸 Screenshot berhasil: <a href='file://${filePath}'>${file.name}</a>")
 				} else {
-					KeywordUtil.logInfo("⚠️ Screenshot berhasil dibuat tapi gagal dibaca ulang (bisa jadi formatnya error): ${filePath}")
+					file.delete()
+					KeywordUtil.logInfo("⚠️ Screenshot gagal dibuat (file corrupt/kosong): ${filePath}")
 				}
 			} else {
 				KeywordUtil.logInfo("❌ Gagal ambil screenshot ke: ${filePath}")
 			}
 		} catch (Exception e) {
-			KeywordUtil.logInfo("❌ ERROR saat ambil screenshot aman: ${e.message}")
+			KeywordUtil.logInfo("❌ ERROR saat safeScreenshot: ${e.message}")
 		}
 	}
+
+
+
+
 }

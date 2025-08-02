@@ -20,11 +20,11 @@ import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.testobject.TestObject
 
 
-WebUI.scrollToElement(findTestObject("Object Repository/Basic/Datepicker/DatePicker2,4"), 10)
+WebUI.scrollToElement(findTestObject("Object Repository/Basic/Datepicker/helper.DatePicker2,4"), 10)
 
-CustomKeywords.'DatePicker.selectStaticDateCombined'('08-06-2001')
+CustomKeywords.'helper.DatePicker.selectStaticDateCombined'('08-06-2001')
 
-String selectedDate = CustomKeywords.'DatePicker.getStaticDatePickerValue'()
+String selectedDate = CustomKeywords.'helper.DatePicker.getStatichelper.DatePickerValue'()
 WebUI.comment("Tanggal dipilih: $selectedDate")
 
 if (selectedDate == GlobalVariable.tanggal) {

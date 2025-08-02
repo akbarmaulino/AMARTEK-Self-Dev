@@ -39,8 +39,8 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Managem
 
 String successMessage = WebUI.getText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Not Found Data'))
 
-String cleanedMessage = CustomKeywords.'helper.cleanMessage'(successMessage)
-String expectedMessage = CustomKeywords.'helper.cleanMessage'(GlobalVariable.messageNotFound)
+String cleanedMessage = CustomKeywords.'helper.helper.cleanMessage'(successMessage)
+String expectedMessage = CustomKeywords.'helper.helper.cleanMessage'(GlobalVariable.messageNotFound)
 
 if (WebUI.verifyElementPresent(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Main Menu/alert_Not Found Data'), 10)) {
 	if (cleanedMessage.equals(expectedMessage)) {
