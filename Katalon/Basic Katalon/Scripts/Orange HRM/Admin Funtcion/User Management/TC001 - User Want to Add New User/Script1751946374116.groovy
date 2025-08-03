@@ -42,9 +42,9 @@ WebUI.click(findTestObject('Object Repository/Orange HRM/Admin Menu/User Managem
 WebUI.setText(findTestObject('Object Repository/Orange HRM/Admin Menu/User Management/Add Page/field_Employee Name'), GlobalVariable.employeeName)
 
 
-//String xpath_select_name = "//div[@role='option' and .//span[text()='" + GlobalVariable.employeeName + "']]"
+String xpath_select_name = "//div[@role='option' and .//span[text()='" + GlobalVariable.employeeName + "']]"
 
-String xpath_select_name = "//div[@role='asd' and .//span[text()='" + GlobalVariable.employeeName + "']]"
+//String xpath_select_name = "//div[@role='asd' and .//span[text()='" + GlobalVariable.employeeName + "']]"
 TestObject select_name = new TestObject()
 select_name.addProperty("xpath", ConditionType.EQUALS, xpath_select_name)
 

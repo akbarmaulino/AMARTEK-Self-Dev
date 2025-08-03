@@ -37,26 +37,15 @@ class Hook {
 
 	@AfterTestCase
 	def afterTestCase(TestCaseContext testCaseContext) {
-		String status = testCaseContext.getTestCaseStatus()
-		String tcName = testCaseContext.getTestCaseId().replaceAll("[^a-zA-Z0-9_\\-]", "_")
-		String filename = (status == "FAILED" ? "FAILED_" : "") + tcName
-
-		// Screenshot hanya sekali
-		CustomKeywords.'helper.ScreenshotUtils.safeScreenshot'(filename)
-
+		WebUI.delay(2)
+	
+		if (testCaseContext.getTestCaseStatus() == "FAILED") {
+			String name = "FAILED_" + testCaseContext.getTestCaseId().replaceAll("[^a-zA-Z0-9_\\-]", "_")
+			CustomKeywords.'helper.ScreenshotUtils.safeScreenshot'(name)
+		}
+	
+		WebUI.delay(2)
 		WebUI.closeBrowser()
 	}
-	
-	// HAPUS ATAU NONAKTIFKAN
-	// @TearDownIfFailed
-	// def takeScreenshotIfFailed() {
-	// 	ScreenshotUtils.safeScreenshot("FAILED_" + java.util.UUID.randomUUID().toString())
-	// }
-
-
-
-
-
-
-
 }
+
