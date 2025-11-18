@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joki Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎮 Joki Marketplace</h1>
+            <div class="user-info">
+                <span id="currentUserDisplay">Guest</span>
+                <div class="nav-buttons">
+                    <button class="btn btn-primary" onclick="switchRole('customer')">Customer</button>
+                    <button class="btn btn-primary" onclick="switchRole('worker')">Worker</button>
+                    <button class="btn btn-primary" onclick="switchRole('admin')">Admin</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Dashboard -->
+        <div id="customer" class="page">
+            <div class="content">
+                <h2>Customer Dashboard</h2>
+                
+                <!-- Submit New Task -->
+                <div class="section">
+                    <h3>📝 Submit Task Baru</h3>
+                    <form id="taskForm" class="form">
+                        <input type="text" id="taskTitle" placeholder="Judul Task" required>
+                        <textarea id="taskDesc" placeholder="Deskripsi Detail Task" rows="3" required></textarea>
+                        <textarea id="taskReq" placeholder="Requirements & Kriteria" rows="2" required></textarea>
+                        <input type="date" id="taskDeadline" required>
+                        <input type="number" id="taskBudget" placeholder="Budget Maksimal (Rp)" required>
+                        <button type="submit" class="btn btn-success">Submit Task</button>
+                    </form>
+                </div>
+
+                <!-- My Tasks -->
+                <div class="section">
+                    <h3>📋 Task Saya</h3>
+                    <div id="customerTasksList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Worker Dashboard -->
+        <div id="worker" class="page">
+            <div class="content">
+                <h2>Worker Dashboard</h2>
+                
+                <!-- Available Tasks -->
+                <div class="section">
+                    <h3>💼 Task Tersedia untuk Bid</h3>
+                    <div id="availableTasks"></div>
+                </div>
+
+                <!-- My Bids -->
+                <div class="section">
+                    <h3>💰 Bid Saya</h3>
+                    <div id="workerBids"></div>
+                </div>
+
+                <!-- My Assigned Tasks -->
+                <div class="section">
+                    <h3>✅ Task yang Saya Kerjakan</h3>
+                    <div id="workerTasks"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin" class="page">
+            <div class="content">
+                <h2>Admin Dashboard</h2>
+                
+                <!-- Pending Approval -->
+                <div class="section">
+                    <h3>⏳ Task Menunggu Approval</h3>
+                    <div id="pendingTasks"></div>
+                </div>
+
+                <!-- Approved Tasks with Bids -->
+                <div class="section">
+                    <h3>📊 Task Approved (Proses Bidding)</h3>
+                    <div id="approvedTasks"></div>
+                </div>
+
+                <!-- Active Tasks -->
+                <div class="section">
+                    <h3>🔄 Task dalam Progress</h3>
+                    <div id="activeTasks"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Bid Task -->
+    <div id="bidModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBidModal()">&times;</span>
+            <h3>Submit Bid</h3>
+            <form id="bidForm">
+                <input type="hidden" id="bidTaskId">
+                <input type="text" id="bidWorkerName" placeholder="Nama Anda" required>
+                <input type="email" id="bidWorkerEmail" placeholder="Email" required>
+                <input type="text" id="bidWorkerPhone" placeholder="No. Telepon" required>
+                <input type="number" id="bidAmount" placeholder="Harga Bid (Rp)" required>
+                <textarea id="bidProposal" placeholder="Proposal & Portofolio Anda" rows="4" required></textarea>
+                <button type="submit" class="btn btn-success">Submit Bid</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: View Bids (Admin) -->
+    <div id="viewBidsModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeViewBidsModal()">&times;</span>
+            <h3>Daftar Bid</h3>
+            <div id="bidsContainer"></div>
+        </div>
+    </div>
+
+    <!-- Modal: Submit Work (Worker) -->
+    <div id="submitWorkModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSubmitWorkModal()">&times;</span>
+            <h3>Submit Hasil Kerja</h3>
+            <form id="submitWorkForm">
+                <input type="hidden" id="submitTaskId">
+                <textarea id="submitNotes" placeholder="Catatan hasil kerja" rows="3" required></textarea>
+                <input type="url" id="submitLink" placeholder="Link hasil (Google Drive, dll)" required>
+                <button type="submit" class="btn btn-success">Submit Hasil</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Revision (Worker) -->
+    <div id="revisionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRevisionModal()">&times;</span>
+            <h3>Submit Revisi</h3>
+            <form id="revisionForm">
+                <input type="hidden" id="revisionTaskId">
+                <textarea id="revisionNotes" placeholder="Catatan revisi" rows="3" required></textarea>
+                <input type="url" id="revisionLink" placeholder="Link hasil revisi" required>
+                <button type="submit" class="btn btn-success">Submit Revisi</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
