@@ -1,0 +1,43 @@
+# Ignore folder besar Katalon
+Katalon/Apps Katalon/
+
+# Ignore semua build & cache
+bin/
+build/
+out/
+dist/
+.gradle/
+target/
+reports/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.iml
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs & temp
+*.log
+*.tmp
+
+# Ignore executable & binary
+*.exe
+*.dll
+*.msi
+*.so
+*.dylib
+
+# Ignore compressed / large archives
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.jar
+
+# Ignore environment files
+.env
+.env.local

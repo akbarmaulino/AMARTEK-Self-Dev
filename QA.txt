@@ -1,0 +1,47 @@
+Foundation of Quality Assurance
+Introduction to Quality Assurance
+Software Development Life Cycle (SDLC)
+Software Testing Life Cycle (STLC)
+Jenis-Jenis Testing
+Requirement Document QA
+
+Manual Testing
+Pengenalan Manual Testing & Peran QA
+Test Planning
+Test Case & Scenarios
+Eksekusi & Pelaporan Bug
+Regression Testing
+Compatibility Testing
+Exploratory & Accessibility Testing
+
+API & Database Testing
+API Fundamentals & Postman Basics
+Manual API Testing dengan Postman
+Database Fundamentals & Testing
+Integrasi API dengan Database
+Simulasi Pengujian API & Database
+
+Automated Testing
+Introduction to Automation Testing
+Programming Java (Fundamental)
+Java Logic & Structure
+Functions & Methods
+Object-Oriented Programming (OOP)
+HTML
+CSS
+GIT
+Automation Framework: Structure & Configuration
+Test Runner, Assertions, and Data-Driven Testing
+Listeners, Reporting, and Environment Configuration
+Introduction to Selenium WebDriver & Basic Operations
+Handling Dynamic Elements & Parallel Execution in Selenium
+API Automation Testing with REST Assured – Fundamentals
+API Automation Testing with REST Assured – Advanced
+Data Bidding in UI & API Automation
+Mobile Automation Testing with Appium – Fundamentals
+Mobile Automation Testing with Appium – Advanced
+
+Advanced Testing
+CI/CD Software Testing
+Analytical Thinking dalam QA
+

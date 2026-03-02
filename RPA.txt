@@ -1,0 +1,54 @@
+RPA Fundamentals and Business Analyst Concept
+1. Introduction to Robotic Process Automation (RPA)
+2. RPA Project Lifecycle & Roles
+3. Automation Quadrant: Suitability & Readiness
+4. Business Documentation: Process Design Document (PDD)
+5. Bridging Business & Technical Delivery
+6. Case Study Introduction
+
+
+Introduction to UI Path
+1. Written Test 1 - RPA Fundamentals and Business Analyst Concept
+2. Setting Up Your RPA Development Environment
+3. UiPath Studio Interface Overview and Basic Workflows Activites
+4. Variables, Data Types, and Control Flow [1/2]
+5. Variables, Data Types, and Control Flow [2/2]
+6. Debugging and Error Handling in UiPath
+7. Learning GIT Ecosystem
+
+Core Automation Technique
+1. [Excel] Introduction to Excel Activities and File/Folder Automation
+2. [Excel] Data Table Fundamentals
+3. Written Test 2 - Introduction to UiPath
+4. [Excel] Data Manipulation & Business Operations
+5. [Excel] Advanced Excel Automation
+6. [Email] Working with Incoming Emails
+7. [Email] Sending & Managing Outgoing Emails
+8. [PDF] Reading & Extracting Data
+9. [PDF] Managing & Validating Files
+10. [Browser] Fundamentals & Input Automation
+11. [Browser] Data Extraction & Error Handling
+12. UI Automation
+13. Deployment & Monitoring RPA
+14. Modularisasi Workflow & Dependency Management
+15. Integrasi Core Automation
+16. How to Build Portofolio
+
+Robotics Enterprise (RE) Framework
+1. Fundamentals of Data Visualization
+2. Advanced Techniques in Python Data Visualization
+3. Exploratory Data Analysis with Python
+4. Advanced Exploratory Data Analysis Techniques in Python
+
+Management Database
+1. Introduction to RE Framework
+2. Exception & Retry Handling
+3. Customizing RE Framework
+4. Implementing Business Use Case with RE Framework
+
+Advanced Technique
+1. API & Web Services Fundamentals
+2. Practical API Integration in UiPath
+3. Creating Library in UiPath
+4. Introduction to Intelligent Automation (IA) and Hyperautomation
+

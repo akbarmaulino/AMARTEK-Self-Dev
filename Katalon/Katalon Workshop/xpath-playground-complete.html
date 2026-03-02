@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>XPath Playground — Complete</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0f;
+    --surface: #16161a;
+    --surface2: #1e1e24;
+    --border: #2a2a35;
+    --accent: #7c6aff;
+    --accent2: #ff6a6a;
+    --accent3: #6affc8;
+    --accent4: #ffb86a;
+    --text: #e8e8f0;
+    --text-muted: #6b6b80;
+    --highlight: rgba(124,106,255,0.15);
+    --highlight-active: rgba(124,106,255,0.35);
+  }
+
+  body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; min-height: 100vh; padding: 20px; }
+
+  h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px; font-family: 'JetBrains Mono', monospace; }
+
+  .main-layout { display: grid; grid-template-columns: 1fr 380px; gap: 16px; max-width: 1600px; margin: 0 auto; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tab {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 7px 14px; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+  }
+  .tab:hover { border-color: var(--accent); color: var(--text); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* PANELS */
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .panel-header {
+    background: var(--surface2); padding: 10px 16px; font-size: 0.68rem;
+    font-family: 'JetBrains Mono', monospace; color: var(--text-muted);
+    letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-purple { background: var(--accent); }
+  .dot-red { background: var(--accent2); }
+  .dot-green { background: var(--accent3); }
+  .dot-yellow { background: var(--accent4); }
+
+  /* FORM AREA */
+  .form-area { padding: 20px; display: none; }
+  .form-area.active { display: block; }
+
+  .section-tag { font-size: 0.62rem; font-family: 'JetBrains Mono', monospace; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+
+  label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 5px; }
+  input[type="text"], input[type="email"], input[type="password"], input[type="search"],
+  input[type="number"], input[type="tel"], input[type="date"], select, textarea {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+    padding: 9px 12px; outline: none; transition: border-color 0.2s; margin-bottom: 10px;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,106,255,0.12); }
+  select option { background: var(--surface2); }
+
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+  button[type="submit"], .btn-primary {
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: 9px 18px; font-family: 'Syne', sans-serif; font-weight: 600;
+    font-size: 0.82rem; cursor: pointer; transition: opacity 0.2s; width: 100%;
+  }
+  .btn-secondary {
+    background: transparent; color: var(--text-muted); border: 1px solid var(--border);
+    border-radius: 8px; padding: 9px 18px; font-family: 'Syne', sans-serif; font-weight: 600;
+    font-size: 0.82rem; cursor: pointer; transition: all 0.2s; width: 100%;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-danger { background: var(--accent2); color: #fff; border: none; border-radius: 8px; padding: 6px 14px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.75rem; cursor: pointer; }
+  .btn-success { background: var(--accent3); color: #000; border: none; border-radius: 8px; padding: 6px 14px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.75rem; cursor: pointer; }
+  .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+  .btn-sm { width: auto; padding: 5px 12px; font-size: 0.72rem; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; }
+  th { background: var(--surface2); color: var(--text-muted); padding: 9px 12px; text-align: left; font-size: 0.68rem; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--highlight); }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.62rem; font-weight: 600; }
+  .badge-green { background: rgba(106,255,200,0.15); color: var(--accent3); }
+  .badge-red { background: rgba(255,106,106,0.15); color: var(--accent2); }
+  .badge-yellow { background: rgba(255,184,106,0.15); color: var(--accent4); }
+
+  /* SEARCH */
+  .search-wrapper { position: relative; margin-bottom: 10px; }
+  .search-wrapper input { margin-bottom: 0; padding-right: 34px; }
+  .clear-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.72rem; padding: 4px; width: auto; }
+
+  /* CHECKBOX & RADIO */
+  .checkbox-group, .radio-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; }
+  .check-item, .radio-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; }
+  .check-item input, .radio-item input { width: 15px; height: 15px; accent-color: var(--accent); margin: 0; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; width: 400px; max-width: 90vw; }
+  .modal h3 { font-size: 1rem; margin-bottom: 8px; color: var(--text); }
+  .modal p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; }
+  .modal-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* DROPDOWN */
+  .dropdown-wrapper { position: relative; display: inline-block; margin-bottom: 10px; }
+  .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; min-width: 180px; z-index: 10; overflow: hidden; }
+  .dropdown-menu.open { display: block; }
+  .dropdown-item { padding: 9px 14px; font-size: 0.8rem; cursor: pointer; color: var(--text-muted); transition: background 0.15s; }
+  .dropdown-item:hover { background: var(--highlight); color: var(--text); }
+
+  /* ACCORDION */
+  .accordion-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+  .accordion-header { padding: 12px 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; background: var(--surface2); }
+  .accordion-header:hover { background: var(--highlight); }
+  .accordion-body { display: none; padding: 12px 14px; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+  .accordion-body.open { display: block; }
+  .accordion-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+  .accordion-arrow.open { transform: rotate(180deg); }
+
+  /* TOOLTIP */
+  .tooltip-wrapper { position: relative; display: inline-block; }
+  .tooltip { display: none; position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 0.72rem; white-space: nowrap; color: var(--text); z-index: 10; }
+  .tooltip-wrapper:hover .tooltip { display: block; }
+
+  /* TABS in form */
+  .form-tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+  .form-tab { padding: 8px 14px; font-size: 0.78rem; cursor: pointer; color: var(--text-muted); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s; }
+  .form-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .form-tab-content { display: none; }
+  .form-tab-content.active { display: block; }
+
+  /* IFRAME */
+  .iframe-wrapper { border: 2px dashed var(--accent4); border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
+  .iframe-label { background: rgba(255,184,106,0.1); padding: 6px 12px; font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; color: var(--accent4); letter-spacing: 0.08em; }
+  iframe { width: 100%; border: none; display: block; }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+  /* NOTIFICATION */
+  .notif { background: rgba(106,255,200,0.1); border: 1px solid rgba(106,255,200,0.3); border-radius: 8px; padding: 10px 14px; font-size: 0.78rem; color: var(--accent3); margin-bottom: 10px; display: none; }
+  .notif.show { display: block; }
+
+  /* XPATH TESTER */
+  .xpath-tester { position: sticky; top: 20px; }
+  .xpath-area { padding: 16px; }
+  textarea.xpath-input {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--accent3); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;
+    padding: 10px 12px; outline: none; resize: none; height: 65px; margin-bottom: 10px;
+    transition: border-color 0.2s;
+  }
+  textarea.xpath-input:focus { border-color: var(--accent); }
+  .test-btn { background: var(--accent); color: #fff; border: none; border-radius: 8px; padding: 9px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; width: 100%; margin-bottom: 12px; transition: opacity 0.2s; }
+  .test-btn:hover { opacity: 0.85; }
+
+  .iframe-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 0.75rem; color: var(--text-muted); }
+  .iframe-toggle input { accent-color: var(--accent4); width: 14px; height: 14px; margin: 0; }
+  .iframe-toggle label { color: var(--accent4); cursor: pointer; margin: 0; font-family: 'JetBrains Mono', monospace; }
+
+  .result-count { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; display: none; }
+  .result-count span { color: var(--accent3); font-weight: 700; }
+  .result-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; min-height: 60px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; max-height: 300px; overflow-y: auto; }
+  .result-item { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; margin-bottom: 5px; font-size: 0.72rem; color: var(--text-muted); word-break: break-all; }
+  .result-item.ok { border-color: var(--accent); color: var(--text); }
+  .tag { color: var(--accent2); }
+  .attr { color: var(--accent); }
+  .val { color: var(--accent3); }
+  .no-result { color: var(--accent2); font-size: 0.78rem; }
+  .error-msg { color: var(--accent2); font-size: 0.75rem; }
+
+  /* CHEATSHEET */
+  .cheat-section { grid-column: 1 / -1; }
+  .cheat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; padding: 16px; }
+  .cheat-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; cursor: pointer; transition: all 0.2s; }
+  .cheat-item:hover { border-color: var(--accent); background: var(--highlight); }
+  .cheat-item code { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--accent3); margin-bottom: 5px; word-break: break-all; }
+  .cheat-item p { font-size: 0.7rem; color: var(--text-muted); line-height: 1.4; }
+  .cheat-tip { font-size: 0.62rem; color: var(--accent); margin-top: 3px; font-family: 'JetBrains Mono', monospace; }
+  .cheat-category { padding: 10px 16px 4px; font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .highlighted-element { outline: 2px solid var(--accent) !important; outline-offset: 2px !important; background: var(--highlight-active) !important; }
+
+  /* DYNAMIC CONTENT */
+  .dynamic-list { min-height: 40px; }
+  .dynamic-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+
+  /* PAGINATION */
+  .pagination { display: flex; gap: 4px; margin-top: 10px; }
+  .page-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+  .page-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .page-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+  /* STEPPER */
+  .stepper { display: flex; align-items: center; gap: 0; margin-bottom: 10px; }
+  .step { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .step-circle { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--text-muted); position: relative; z-index: 1; background: var(--surface); }
+  .step-circle.done { border-color: var(--accent3); color: var(--accent3); }
+  .step-circle.active { border-color: var(--accent); color: var(--accent); }
+  .step-label { font-size: 0.62rem; color: var(--text-muted); margin-top: 4px; text-align: center; }
+  .step-line { flex: 1; height: 2px; background: var(--border); margin-top: -14px; }
+  .step-line.done { background: var(--accent3); }
+</style>
+</head>
+<body>
+
+<div style="max-width:1600px;margin:0 auto;">
+  <h1>XPath Playground — Complete</h1>
+  <p class="subtitle">// semua case ada di sini — klik tab, test xpath, lihat highlight</p>
+
+  <div class="main-layout">
+
+    <!-- KIRI: FORM AREA -->
+    <div>
+      <div class="tabs" id="main-tabs">
+        <div class="tab active" onclick="switchTab('login')">Login/Register</div>
+        <div class="tab" onclick="switchTab('form')">Form Lengkap</div>
+        <div class="tab" onclick="switchTab('table')">Tabel</div>
+        <div class="tab" onclick="switchTab('dynamic')">Dynamic Content</div>
+        <div class="tab" onclick="switchTab('modal')">Modal & Dropdown</div>
+        <div class="tab" onclick="switchTab('iframe')">iFrame</div>
+        <div class="tab" onclick="switchTab('advanced')">Advanced Elements</div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="dot dot-red"></span><span class="dot dot-purple"></span><span class="dot dot-green"></span>
+          <span id="tab-label">login-register.html</span>
+        </div>
+
+        <!-- TAB: LOGIN -->
+        <div class="form-area active" id="tab-login" data-tab="login">
+
+          <div id="login-section" style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)">
+            <div class="section-tag">// login form</div>
+            <form id="login-form">
+              <label>Email</label>
+              <input type="email" id="email-input" name="email" placeholder="Enter your email" />
+              <label>Password</label>
+              <input type="password" id="password-input" name="password" placeholder="Enter your password" />
+              <div class="btn-row">
+                <button type="submit" id="login-btn">Login</button>
+                <button type="button" class="btn-secondary" id="forgot-btn">Forgot Password</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="register-section">
+            <div class="section-tag">// register form (halaman sama — duplikat email input!)</div>
+            <form id="register-form">
+              <label>Email</label>
+              <input type="email" id="reg-email" name="email" placeholder="Enter your email" />
+              <label>Password</label>
+              <input type="password" id="reg-password" name="password" placeholder="Create password" />
+              <label>Confirm Password</label>
+              <input type="password" id="reg-confirm" name="confirmPassword" placeholder="Confirm password" />
+              <button type="submit" id="register-btn">Create Account</button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- TAB: FORM LENGKAP -->
+        <div class="form-area" id="tab-form" data-tab="form">
+          <div class="section-tag">// profile form — banyak input type text tanpa id unik</div>
+          <form id="profile-form">
+
+            <div class="row-2">
+              <div>
+                <label>First Name</label>
+                <input type="text" id="first-name" name="firstName" placeholder="First name" />
+              </div>
+              <div>
+                <label>Last Name</label>
+                <input type="text" id="last-name" name="lastName" placeholder="Last name" />
+              </div>
+            </div>
+
+            <div class="row-2">
+              <div>
+                <label>Phone</label>
+                <input type="tel" id="phone-input" name="phone" placeholder="+62 812 xxxx" />
+              </div>
+              <div>
+                <label>Date of Birth</label>
+                <input type="date" id="dob-input" name="dob" />
+              </div>
+            </div>
+
+            <label>Address</label>
+            <input type="text" id="address-input" name="address" placeholder="Street address" />
+
+            <div class="row-3">
+              <div>
+                <label>City</label>
+                <input type="text" id="city-input" name="city" placeholder="City" />
+              </div>
+              <div>
+                <label>Province</label>
+                <select id="province-select" name="province">
+                  <option value="">Select province</option>
+                  <option value="jkt">DKI Jakarta</option>
+                  <option value="jbr">Jawa Barat</option>
+                  <option value="jtn">Jawa Tengah</option>
+                  <option value="jtr">Jawa Timur</option>
+                </select>
+              </div>
+              <div>
+                <label>Zip Code</label>
+                <input type="number" id="zip-input" name="zip" placeholder="12345" />
+              </div>
+            </div>
+
+            <label>Gender</label>
+            <div class="radio-group" id="gender-group">
+              <div class="radio-item">
+                <input type="radio" id="gender-male" name="gender" value="male" />
+                <label for="gender-male" style="margin:0">Male</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="gender-female" name="gender" value="female" />
+                <label for="gender-female" style="margin:0">Female</label>
+              </div>
+            </div>
+
+            <label>Interests</label>
+            <div class="checkbox-group" id="interest-group">
+              <div class="check-item">
+                <input type="checkbox" id="chk-tech" name="interest" value="tech" />
+                <label for="chk-tech" style="margin:0">Technology</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="chk-design" name="interest" value="design" />
+                <label for="chk-design" style="margin:0">Design</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="chk-business" name="interest" value="business" />
+                <label for="chk-business" style="margin:0">Business</label>
+              </div>
+            </div>
+
+            <label>Bio</label>
+            <textarea id="bio-input" name="bio" placeholder="Write something about you..." style="height:70px;resize:none"></textarea>
+
+            <div class="btn-row">
+              <button type="submit" id="save-profile-btn">Save Profile</button>
+              <button type="button" class="btn-secondary" id="reset-profile-btn">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB: TABLE -->
+        <div class="form-area" id="tab-table" data-tab="table">
+
+          <div style="margin-bottom:16px">
+            <div class="section-tag">// search & filter</div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+              <div class="search-wrapper" style="flex:1;min-width:160px">
+                <input type="text" id="search-input" placeholder="Search..." />
+                <button class="clear-btn" id="clear-btn" aria-label="Clear search">✕</button>
+              </div>
+              <select id="status-filter" name="status" style="width:130px;margin-bottom:0">
+                <option value="">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+              </select>
+              <select id="role-filter" name="role" style="width:120px;margin-bottom:0">
+                <option value="">All Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section-tag">// user table</div>
+          <table id="user-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="row-john">
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td><span class="badge badge-green" data-status="active">Active</span></td>
+                <td>Admin</td>
+                <td style="display:flex;gap:6px">
+                  <button class="btn-success btn-sm" id="edit-john" data-testid="edit-btn-john">Edit</button>
+                  <button class="btn-danger btn-sm" id="delete-john">Delete</button>
+                </td>
+              </tr>
+              <tr id="row-jane">
+                <td>Jane Doe</td>
+                <td>jane@example.com</td>
+                <td><span class="badge badge-red" data-status="inactive">Inactive</span></td>
+                <td>User</td>
+                <td style="display:flex;gap:6px">
+                  <button class="btn-success btn-sm" id="edit-jane" data-testid="edit-btn-jane">Edit</button>
+                  <button class="btn-danger btn-sm" id="delete-jane">Delete</button>
+                </td>
+              </tr>
+              <tr id="row-budi">
+                <td>Budi Santoso</td>
+                <td>budi@example.com</td>
+                <td><span class="badge badge-green" data-status="active">Active</span></td>
+                <td>User</td>
+                <td style="display:flex;gap:6px">
+                  <button class="btn-success btn-sm" id="edit-budi" data-testid="edit-btn-budi">Edit</button>
+                  <button class="btn-danger btn-sm" id="delete-budi">Delete</button>
+                </td>
+              </tr>
+              <tr id="row-siti">
+                <td>Siti Rahayu</td>
+                <td>siti@example.com</td>
+                <td><span class="badge badge-yellow" data-status="pending">Pending</span></td>
+                <td>User</td>
+                <td style="display:flex;gap:6px">
+                  <button class="btn-success btn-sm" id="edit-siti" data-testid="edit-btn-siti">Edit</button>
+                  <button class="btn-danger btn-sm" id="delete-siti">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pagination" id="pagination">
+            <button class="page-btn active" data-page="1">1</button>
+            <button class="page-btn" data-page="2">2</button>
+            <button class="page-btn" data-page="3">3</button>
+            <button class="page-btn" id="next-page">Next →</button>
+          </div>
+        </div>
+
+        <!-- TAB: DYNAMIC CONTENT -->
+        <div class="form-area" id="tab-dynamic" data-tab="dynamic">
+          <div class="section-tag">// element muncul setelah interaksi</div>
+
+          <div id="notif-success" class="notif">✅ Item berhasil ditambahkan!</div>
+
+          <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+            <input type="text" id="new-item-input" placeholder="Nama item baru..." style="flex:1;min-width:140px;margin-bottom:0" />
+            <button type="button" id="add-item-btn" class="btn-primary btn-sm" style="width:auto">Add Item</button>
+          </div>
+
+          <div class="dynamic-list" id="dynamic-list">
+            <div class="dynamic-item" data-item="item-1">
+              <span>Item Pertama</span>
+              <button class="btn-danger btn-sm" data-action="delete" data-item="item-1">Hapus</button>
+            </div>
+            <div class="dynamic-item" data-item="item-2">
+              <span>Item Kedua</span>
+              <button class="btn-danger btn-sm" data-action="delete" data-item="item-2">Hapus</button>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// loading state</div>
+          <button type="button" id="load-btn" class="btn-primary" style="width:auto;margin-bottom:10px">Simulate Load Data</button>
+          <div id="loading-indicator" style="display:none;color:var(--accent4);font-size:0.8rem;font-family:'JetBrains Mono',monospace">⏳ Loading...</div>
+          <div id="loaded-content" style="display:none">
+            <input type="text" id="loaded-input" placeholder="Input yang muncul setelah load" />
+            <button type="button" id="loaded-btn">Button yang muncul setelah load</button>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// stepper / wizard</div>
+          <div class="stepper" id="stepper">
+            <div class="step">
+              <div class="step-circle done" id="step-1">1</div>
+              <div class="step-label">Personal</div>
+            </div>
+            <div class="step-line done" id="line-1"></div>
+            <div class="step">
+              <div class="step-circle active" id="step-2">2</div>
+              <div class="step-label">Address</div>
+            </div>
+            <div class="step-line" id="line-2"></div>
+            <div class="step">
+              <div class="step-circle" id="step-3">3</div>
+              <div class="step-label">Payment</div>
+            </div>
+            <div class="step-line" id="line-3"></div>
+            <div class="step">
+              <div class="step-circle" id="step-4">4</div>
+              <div class="step-label">Confirm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: MODAL & DROPDOWN -->
+        <div class="form-area" id="tab-modal" data-tab="modal">
+
+          <div class="section-tag">// modal / dialog</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+            <button type="button" class="btn-primary btn-sm" style="width:auto" onclick="openModal('modal-confirm')">Open Confirm Modal</button>
+            <button type="button" class="btn-secondary btn-sm" style="width:auto" onclick="openModal('modal-form')">Open Form Modal</button>
+            <button type="button" class="btn-danger btn-sm" onclick="openModal('modal-delete')">Open Delete Modal</button>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// dropdown menu</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+            <div class="dropdown-wrapper">
+              <button type="button" class="btn-secondary btn-sm" onclick="toggleDropdown('dropdown-action')" id="dropdown-trigger-action">Actions ▾</button>
+              <div class="dropdown-menu" id="dropdown-action" role="menu">
+                <div class="dropdown-item" role="menuitem" id="action-edit">Edit</div>
+                <div class="dropdown-item" role="menuitem" id="action-duplicate">Duplicate</div>
+                <div class="dropdown-item" role="menuitem" id="action-archive">Archive</div>
+                <div class="dropdown-item" role="menuitem" id="action-delete" style="color:var(--accent2)">Delete</div>
+              </div>
+            </div>
+            <div class="dropdown-wrapper">
+              <button type="button" class="btn-secondary btn-sm" onclick="toggleDropdown('dropdown-filter')" id="dropdown-trigger-filter">Filter by ▾</button>
+              <div class="dropdown-menu" id="dropdown-filter" role="menu">
+                <div class="dropdown-item" role="menuitem">Date</div>
+                <div class="dropdown-item" role="menuitem">Status</div>
+                <div class="dropdown-item" role="menuitem">Role</div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// accordion</div>
+          <div id="accordion-group">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)" id="accordion-1-header">
+                <span>What is XPath?</span>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="accordion-body" id="accordion-1-body">XPath adalah bahasa query untuk navigasi element dalam dokumen XML/HTML.</div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)" id="accordion-2-header">
+                <span>Kenapa pakai XPath di Katalon?</span>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="accordion-body" id="accordion-2-body">Karena XPath bisa navigasi berdasarkan struktur dan relasi antar element, tidak hanya attribute.</div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)" id="accordion-3-header">
+                <span>Apa bedanya / dan //?</span>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="accordion-body" id="accordion-3-body">// cari dari nol, / gerak dari posisi sekarang.</div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// tooltip</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap">
+            <div class="tooltip-wrapper">
+              <button type="button" class="btn-secondary btn-sm" aria-label="Info button" data-tooltip="info">Info</button>
+              <div class="tooltip" role="tooltip">Ini adalah tooltip info</div>
+            </div>
+            <div class="tooltip-wrapper">
+              <button type="button" class="btn-danger btn-sm" aria-label="Warning button" data-tooltip="warning">Warning</button>
+              <div class="tooltip" role="tooltip">Ini adalah tooltip warning</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: IFRAME -->
+        <div class="form-area" id="tab-iframe" data-tab="iframe">
+          <div class="section-tag">// iframe — element di dalam frame terpisah</div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px">
+            Element di dalam iframe punya DOM sendiri. Di Katalon harus <code style="font-family:'JetBrains Mono',monospace;color:var(--accent)">switchToFrame()</code> dulu sebelum bisa akses element-nya.
+          </p>
+
+          <div class="iframe-wrapper">
+            <div class="iframe-label">⚡ iframe#payment-frame — src="/iframe-content"</div>
+            <iframe id="payment-frame" name="payment-frame" srcdoc="
+              <!DOCTYPE html>
+              <html>
+              <head>
+              <style>
+                * { box-sizing: border-box; margin: 0; padding: 0; }
+                body { background: #0f0f14; color: #e8e8f0; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+                label { display: block; font-size: 0.75rem; color: #6b6b80; margin-bottom: 5px; }
+                input, select { width: 100%; background: #1e1e24; border: 1px solid #2a2a35; border-radius: 6px; color: #e8e8f0; font-size: 0.8rem; padding: 8px 10px; outline: none; margin-bottom: 10px; }
+                .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+                button { background: #7c6aff; color: #fff; border: none; border-radius: 6px; padding: 9px; width: 100%; font-weight: 600; cursor: pointer; font-size: 0.82rem; }
+                h3 { font-size: 0.9rem; margin-bottom: 14px; color: #ffb86a; }
+              </style>
+              </head>
+              <body>
+                <h3>💳 Payment Form (inside iframe)</h3>
+                <form id='payment-form'>
+                  <label>Card Number</label>
+                  <input type='text' id='card-number' name='cardNumber' placeholder='1234 5678 9012 3456' />
+                  <div class='row'>
+                    <div>
+                      <label>Expiry Date</label>
+                      <input type='text' id='expiry-date' name='expiry' placeholder='MM/YY' />
+                    </div>
+                    <div>
+                      <label>CVV</label>
+                      <input type='text' id='cvv-input' name='cvv' placeholder='123' />
+                    </div>
+                  </div>
+                  <label>Cardholder Name</label>
+                  <input type='text' id='card-name' name='cardName' placeholder='John Doe' />
+                  <label>Payment Method</label>
+                  <select id='payment-method' name='paymentMethod'>
+                    <option value=''>Select method</option>
+                    <option value='visa'>Visa</option>
+                    <option value='mastercard'>Mastercard</option>
+                    <option value='bca'>BCA Virtual Account</option>
+                  </select>
+                  <button type='submit' id='pay-btn'>Pay Now</button>
+                </form>
+              </body>
+              </html>
+            " height="320"></iframe>
+          </div>
+
+          <div class="iframe-wrapper" style="margin-top:14px">
+            <div class="iframe-label">⚡ iframe#search-frame — nested search form</div>
+            <iframe id="search-frame" name="search-frame" srcdoc="
+              <!DOCTYPE html>
+              <html>
+              <head>
+              <style>
+                * { box-sizing: border-box; margin: 0; padding: 0; }
+                body { background: #0f0f14; color: #e8e8f0; font-family: 'Segoe UI', sans-serif; padding: 16px; }
+                input { width: 100%; background: #1e1e24; border: 1px solid #2a2a35; border-radius: 6px; color: #e8e8f0; font-size: 0.8rem; padding: 8px 10px; outline: none; margin-bottom: 8px; }
+                button { background: #6affc8; color: #000; border: none; border-radius: 6px; padding: 8px 16px; font-weight: 600; cursor: pointer; font-size: 0.8rem; }
+                h3 { font-size: 0.85rem; margin-bottom: 10px; color: #6affc8; }
+              </style>
+              </head>
+              <body>
+                <h3>🔍 Search Frame</h3>
+                <input type='search' id='frame-search' placeholder='Search products...' />
+                <input type='text' id='frame-category' placeholder='Category filter' />
+                <button type='button' id='frame-search-btn'>Search</button>
+              </body>
+              </html>
+            " height="130"></iframe>
+          </div>
+
+          <hr class="divider" />
+          <div class="section-tag">// cara handle di katalon</div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent3);line-height:1.8">
+            <span style="color:var(--text-muted)">// 1. Switch ke iframe dulu</span><br>
+            WebUI.switchToFrame(findTestObject(<span style="color:var(--accent4)">'iframe#payment-frame'</span>), 10)<br><br>
+            <span style="color:var(--text-muted)">// 2. Baru akses element di dalamnya</span><br>
+            WebUI.setText(findTestObject(<span style="color:var(--accent4)">'input#card-number'</span>), <span style="color:var(--accent4)">'1234...'</span>)<br><br>
+            <span style="color:var(--text-muted)">// 3. Selesai, balik ke parent</span><br>
+            WebUI.switchToDefaultContent()
+          </div>
+        </div>
+
+        <!-- TAB: ADVANCED -->
+        <div class="form-area" id="tab-advanced" data-tab="advanced">
+
+          <div class="section-tag">// tab navigation dalam form</div>
+          <div class="form-tabs" id="inner-tabs">
+            <div class="form-tab active" onclick="switchInnerTab('personal')" id="inner-tab-personal">Personal</div>
+            <div class="form-tab" onclick="switchInnerTab('security')" id="inner-tab-security">Security</div>
+            <div class="form-tab" onclick="switchInnerTab('notification')" id="inner-tab-notification">Notification</div>
+          </div>
+
+          <div class="form-tab-content active" id="inner-personal">
+            <input type="text" id="adv-username" name="username" placeholder="Username" aria-label="Username field" />
+            <input type="email" id="adv-email" name="email" placeholder="Email address" aria-label="Email field" />
+            <input type="text" id="adv-website" name="website" placeholder="Website URL" aria-label="Website URL" />
+          </div>
+          <div class="form-tab-content" id="inner-security">
+            <input type="password" id="adv-current-pw" name="currentPassword" placeholder="Current password" aria-label="Current password" />
+            <input type="password" id="adv-new-pw" name="newPassword" placeholder="New password" aria-label="New password" />
+            <input type="password" id="adv-confirm-pw" name="confirmPassword" placeholder="Confirm new password" aria-label="Confirm password" />
+          </div>
+          <div class="form-tab-content" id="inner-notification">
+            <div class="checkbox-group">
+              <div class="check-item">
+                <input type="checkbox" id="notif-email" name="notifEmail" value="email" aria-label="Email notifications" />
+                <label for="notif-email" style="margin:0">Email notifications</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="notif-sms" name="notifSms" value="sms" aria-label="SMS notifications" />
+                <label for="notif-sms" style="margin:0">SMS notifications</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="notif-push" name="notifPush" value="push" aria-label="Push notifications" checked />
+                <label for="notif-push" style="margin:0">Push notifications</label>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// disabled & readonly elements</div>
+          <label>Normal Input</label>
+          <input type="text" id="normal-input" placeholder="Normal input" />
+          <label>Disabled Input</label>
+          <input type="text" id="disabled-input" placeholder="This is disabled" disabled />
+          <label>Readonly Input</label>
+          <input type="text" id="readonly-input" value="Readonly value" readonly />
+          <div style="display:flex;gap:10px;margin-bottom:10px">
+            <button type="button" id="active-btn" class="btn-primary btn-sm" style="width:auto">Active Button</button>
+            <button type="button" id="disabled-btn" class="btn-secondary btn-sm" style="width:auto" disabled>Disabled Button</button>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// data-testid (best practice)</div>
+          <input type="text" data-testid="master-question-input" placeholder="Master Question input" style="margin-bottom:8px" />
+          <div style="display:flex;gap:10px">
+            <button type="button" data-testid="add-master-question-btn" class="btn-primary btn-sm" style="width:auto">Add Master Question</button>
+            <button type="button" data-testid="cancel-btn" class="btn-secondary btn-sm" style="width:auto">Cancel</button>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="section-tag">// aria attributes</div>
+          <div role="navigation" id="nav-menu" aria-label="Main navigation">
+            <button role="button" aria-label="Home" id="nav-home" class="btn-secondary btn-sm" style="width:auto;margin-right:6px">🏠 Home</button>
+            <button role="button" aria-label="Settings" id="nav-settings" class="btn-secondary btn-sm" style="width:auto;margin-right:6px">⚙️ Settings</button>
+            <button role="button" aria-label="Logout" id="nav-logout" class="btn-secondary btn-sm" style="width:auto">🚪 Logout</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- KANAN: XPATH TESTER -->
+    <div class="xpath-tester">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="dot dot-green"></span>
+          xpath-tester.js
+        </div>
+        <div class="xpath-area">
+          <textarea class="xpath-input" id="xpath-input" spellcheck="false" placeholder="//input[@type='email']"></textarea>
+
+          <div class="iframe-toggle">
+            <input type="checkbox" id="iframe-mode" />
+            <label for="iframe-mode">🟡 Test di dalam iframe</label>
+          </div>
+          <div id="iframe-selector-wrap" style="display:none;margin-bottom:10px">
+            <select id="iframe-selector" style="margin-bottom:0;font-size:0.75rem">
+              <option value="payment-frame">payment-frame</option>
+              <option value="search-frame">search-frame</option>
+            </select>
+          </div>
+
+          <button class="test-btn" onclick="testXPath()">▶ Test XPath</button>
+
+          <div class="result-count" id="result-count">Ditemukan: <span id="count-num">0</span> element</div>
+          <div class="result-box" id="result-box">
+            <span style="color:var(--text-muted);font-size:0.75rem">// hasil muncul di sini</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MINI CHEATSHEET -->
+      <div class="panel" style="margin-top:12px">
+        <div class="panel-header"><span class="dot dot-yellow"></span>quick ref — klik untuk autofill</div>
+        <div style="padding:10px;max-height:400px;overflow-y:auto">
+          <div id="quick-cheat"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FULL CHEATSHEET -->
+  <div class="panel cheat-section" style="margin-top:16px">
+    <div class="panel-header"><span class="dot dot-purple"></span>cheatsheet lengkap — klik untuk autofill</div>
+    <div id="cheat-grid"></div>
+  </div>
+
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-confirm">
+  <div class="modal" role="dialog" aria-label="Confirm dialog">
+    <h3>Confirm Action</h3>
+    <p>Are you sure you want to proceed with this action?</p>
+    <div class="modal-btns">
+      <button type="button" id="modal-confirm-yes" class="btn-primary btn-sm">Yes, Proceed</button>
+      <button type="button" id="modal-confirm-no" class="btn-secondary btn-sm" onclick="closeModal('modal-confirm')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-form">
+  <div class="modal" role="dialog" aria-label="Form dialog">
+    <h3>Add New Item</h3>
+    <p>Fill in the details below.</p>
+    <input type="text" id="modal-item-name" placeholder="Item name" />
+    <select id="modal-item-category" style="margin-bottom:14px">
+      <option>Category A</option>
+      <option>Category B</option>
+    </select>
+    <div class="modal-btns">
+      <button type="button" id="modal-form-save" class="btn-primary btn-sm">Save</button>
+      <button type="button" id="modal-form-cancel" class="btn-secondary btn-sm" onclick="closeModal('modal-form')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-delete">
+  <div class="modal" role="dialog" aria-label="Delete confirmation">
+    <h3>Delete Item</h3>
+    <p>This action cannot be undone. Are you sure?</p>
+    <div class="modal-btns">
+      <button type="button" id="modal-delete-confirm" class="btn-danger btn-sm">Delete</button>
+      <button type="button" id="modal-delete-cancel" class="btn-secondary btn-sm" onclick="closeModal('modal-delete')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// TAB SWITCHING
+const tabLabels = { login: 'login-register.html', form: 'profile-form.html', table: 'table-search.html', dynamic: 'dynamic-content.html', modal: 'modal-dropdown.html', iframe: 'iframe-demo.html', advanced: 'advanced-elements.html' };
+function switchTab(name) {
+  document.querySelectorAll('.form-area').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelectorAll('.tab').forEach(el => { if (el.textContent.trim().toLowerCase().replace(/[^a-z]/g,'').includes(name.replace(/[^a-z]/g,''))) el.classList.add('active'); });
+  document.getElementById('tab-label').textContent = tabLabels[name] || name + '.html';
+  clearHighlights();
+}
+
+// INNER TABS
+function switchInnerTab(name) {
+  document.querySelectorAll('.form-tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.form-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('inner-' + name).classList.add('active');
+  document.getElementById('inner-tab-' + name).classList.add('active');
+}
+
+// MODAL
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }));
+
+// DROPDOWN
+function toggleDropdown(id) {
+  document.querySelectorAll('.dropdown-menu').forEach(d => { if (d.id !== id) d.classList.remove('open'); });
+  document.getElementById(id).classList.toggle('open');
+}
+document.addEventListener('click', e => { if (!e.target.closest('.dropdown-wrapper')) document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('open')); });
+
+// ACCORDION
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.accordion-arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+// DYNAMIC LIST
+document.getElementById('add-item-btn').addEventListener('click', () => {
+  const val = document.getElementById('new-item-input').value.trim();
+  if (!val) return;
+  const id = 'item-' + Date.now();
+  const el = document.createElement('div');
+  el.className = 'dynamic-item';
+  el.setAttribute('data-item', id);
+  el.innerHTML = `<span>${escHtml(val)}</span><button class="btn-danger btn-sm" data-action="delete" data-item="${id}">Hapus</button>`;
+  document.getElementById('dynamic-list').appendChild(el);
+  document.getElementById('new-item-input').value = '';
+  const notif = document.getElementById('notif-success');
+  notif.classList.add('show');
+  setTimeout(() => notif.classList.remove('show'), 2000);
+});
+
+// LOAD SIMULATION
+document.getElementById('load-btn').addEventListener('click', () => {
+  document.getElementById('loading-indicator').style.display = 'block';
+  document.getElementById('loaded-content').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('loading-indicator').style.display = 'none';
+    document.getElementById('loaded-content').style.display = 'block';
+  }, 1500);
+});
+
+// IFRAME TOGGLE
+document.getElementById('iframe-mode').addEventListener('change', function() {
+  document.getElementById('iframe-selector-wrap').style.display = this.checked ? 'block' : 'none';
+});
+
+// HIGHLIGHTS
+let prevHighlighted = [];
+function clearHighlights() {
+  prevHighlighted.forEach(el => el.classList.remove('highlighted-element'));
+  prevHighlighted = [];
+}
+
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// XPATH TESTER
+function testXPath() {
+  clearHighlights();
+  const xpathStr = document.getElementById('xpath-input').value.trim();
+  const resultBox = document.getElementById('result-box');
+  const resultCount = document.getElementById('result-count');
+  const iframeMode = document.getElementById('iframe-mode').checked;
+
+  if (!xpathStr) { resultBox.innerHTML = '<span style="color:var(--text-muted)">// masukkan xpath dulu</span>'; resultCount.style.display = 'none'; return; }
+
+  let results = [];
+  let searchRoot;
+
+  if (iframeMode) {
+    const frameId = document.getElementById('iframe-selector').value;
+    const iframe = document.getElementById(frameId);
+    try {
+      searchRoot = iframe.contentDocument || iframe.contentWindow.document;
+    } catch(e) {
+      resultBox.innerHTML = '<div class="error-msg">❌ Tidak bisa akses iframe (cross-origin)</div>';
+      resultCount.style.display = 'none';
+      return;
+    }
+  } else {
+    const activeTab = document.querySelector('.form-area.active');
+    searchRoot = activeTab || document.body;
+  }
+
+  try {
+    const snapshot = document.evaluate(xpathStr, iframeMode ? searchRoot : (document.querySelector('.form-area.active') || document.body), null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+    for (let i = 0; i < snapshot.snapshotLength; i++) results.push(snapshot.snapshotItem(i));
+  } catch(e) {
+    resultBox.innerHTML = `<div class="error-msg">❌ XPath Error: ${escHtml(e.message)}</div>`;
+    resultCount.style.display = 'none';
+    return;
+  }
+
+  resultCount.style.display = 'block';
+  document.getElementById('count-num').textContent = results.length;
+
+  if (results.length === 0) { resultBox.innerHTML = '<div class="no-result">// tidak ada element yang ditemukan</div>'; return; }
+
+  results.forEach(el => {
+    if (el.classList) { el.classList.add('highlighted-element'); prevHighlighted.push(el); }
+    el.scrollIntoView?.({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  resultBox.innerHTML = results.map((el, i) => {
+    if (!el.tagName) return '';
+    const tag = el.tagName.toLowerCase();
+    const attrs = Array.from(el.attributes || []).slice(0, 4).map(a => `<span class="attr"> ${escHtml(a.name)}</span>=<span class="val">"${escHtml(a.value.substring(0,30))}"</span>`).join('');
+    const inner = (el.textContent || '').trim().substring(0, 40);
+    return `<div class="result-item ok">[${i+1}] <span class="tag">&lt;${tag}</span>${attrs}<span class="tag">&gt;</span>${inner ? `<br><span style="color:var(--text-muted);padding-left:10px">${escHtml(inner)}</span>` : ''}</div>`;
+  }).join('');
+}
+
+document.getElementById('xpath-input').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); testXPath(); } });
+
+// CHEAT DATA
+const cheats = [
+  { cat: "Basic", items: [
+    { x: "//input[@type='email']", d: "Input email", t: "@attribute" },
+    { x: "//input[@type='password']", d: "Input password", t: "@attribute" },
+    { x: "//input[@placeholder='Search...']", d: "Input search", t: "@placeholder" },
+    { x: "//input[@id='search-input']", d: "Input by id", t: "@id — paling stable" },
+    { x: "//input[@name='email']", d: "Input by name", t: "@name" },
+    { x: "//button[text()='Login']", d: "Button Login", t: "text()" },
+    { x: "//button[normalize-space()='Login']", d: "Button Login (safe)", t: "normalize-space()" },
+    { x: "//button[@type='submit']", d: "Button submit", t: "@type" },
+  ]},
+  { cat: "Functions", items: [
+    { x: "//button[contains(text(),'Save')]", d: "Partial text match", t: "contains()" },
+    { x: "//input[contains(@class,'border')]", d: "Partial class match — Tailwind", t: "contains() class" },
+    { x: "//button[not(@type='submit')]", d: "Exclude type submit", t: "not()" },
+    { x: "//input[not(@disabled)]", d: "Input yang tidak disabled", t: "not()" },
+    { x: "//input[@type='text' and @placeholder='Search...']", d: "Dua kondisi", t: "and" },
+    { x: "//button[@type='submit' or @type='button']", d: "Salah satu kondisi", t: "or" },
+  ]},
+  { cat: "Navigation", items: [
+    { x: "//label[text()='Email']/following-sibling::input", d: "Input setelah label Email", t: "following-sibling" },
+    { x: "//label[text()='Email']/following-sibling::input[1]", d: "Input pertama setelah label", t: "following-sibling[1]" },
+    { x: "//button[@id='clear-btn']/preceding-sibling::input", d: "Input sebelum button", t: "preceding-sibling" },
+    { x: "//input[@id='search-input']/parent::div", d: "Parent div dari input", t: "parent — naik 1 level" },
+    { x: "//input[@id='search-input']/ancestor::div[@id='tab-table']", d: "Ancestor spesifik", t: "ancestor" },
+    { x: "//form[@id='login-form']//input[@type='email']", d: "Email di dalam login form", t: "scope ancestor" },
+  ]},
+  { cat: "Table", items: [
+    { x: "//td[text()='John Doe']/following-sibling::td//button", d: "Button edit row John Doe", t: "table navigation" },
+    { x: "//td[text()='Jane Doe']/following-sibling::td[1]", d: "Kolom status Jane Doe", t: "sibling index" },
+    { x: "//span[text()='Active']/parent::td/preceding-sibling::td[last()]", d: "Nama dari row Active", t: "table + preceding" },
+    { x: "//tbody/tr[2]/td[1]", d: "Kolom 1 baris ke-2", t: "row index" },
+    { x: "(//tbody/tr)[last()]", d: "Baris terakhir tabel", t: "last()" },
+  ]},
+  { cat: "Modal & Dynamic", items: [
+    { x: "//*[@role='dialog']//button[text()='Yes, Proceed']", d: "Button dalam modal", t: "role=dialog scope" },
+    { x: "//*[@role='dialog']//input", d: "Input dalam modal", t: "role=dialog scope" },
+    { x: "//*[@role='menu']//*[@role='menuitem']", d: "Item dalam dropdown menu", t: "role=menu" },
+    { x: "//*[@role='menuitem'][text()='Edit']", d: "Item Edit dalam menu", t: "role=menuitem" },
+    { x: "//div[@data-item]/span", d: "Teks dynamic item", t: "data attribute" },
+  ]},
+  { cat: "Advanced", items: [
+    { x: "//*[@aria-label='Clear search']", d: "Element by aria-label", t: "aria-label" },
+    { x: "//*[@aria-label='Main navigation']//button", d: "Button dalam nav area", t: "aria scope" },
+    { x: "//input[@disabled]", d: "Input yang disabled", t: "@disabled" },
+    { x: "//input[@readonly]", d: "Input yang readonly", t: "@readonly" },
+    { x: "//input[@data-testid='master-question-input']", d: "Input by data-testid", t: "data-testid — best practice" },
+    { x: "//button[@data-testid='add-master-question-btn']", d: "Button by data-testid", t: "data-testid" },
+    { x: "(//input[@type='text'])[1]", d: "Input text pertama global", t: "global index" },
+    { x: "(//input[@type='text'])[last()]", d: "Input text terakhir global", t: "global last()" },
+  ]},
+];
+
+// Render full cheat
+const cheatGrid = document.getElementById('cheat-grid');
+cheats.forEach(cat => {
+  const catLabel = document.createElement('div');
+  catLabel.className = 'cheat-category';
+  catLabel.textContent = '// ' + cat.cat;
+  cheatGrid.appendChild(catLabel);
+  const grid = document.createElement('div');
+  grid.className = 'cheat-grid';
+  cat.items.forEach(c => {
+    const el = document.createElement('div');
+    el.className = 'cheat-item';
+    el.innerHTML = `<code>${escHtml(c.x)}</code><p>${c.d}</p><div class="cheat-tip">→ ${c.t}</div>`;
+    el.onclick = () => { document.getElementById('xpath-input').value = c.x; testXPath(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+    grid.appendChild(el);
+  });
+  cheatGrid.appendChild(grid);
+});
+
+// Render quick cheat (sidebar)
+const quickCheat = document.getElementById('quick-cheat');
+const quickItems = cheats.flatMap(c => c.items).slice(0, 12);
+quickItems.forEach(c => {
+  const el = document.createElement('div');
+  el.style.cssText = 'background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:8px 10px;margin-bottom:6px;cursor:pointer;transition:border-color 0.2s';
+  el.innerHTML = `<code style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--accent3);display:block;margin-bottom:3px;word-break:break-all">${escHtml(c.x)}</code><span style="font-size:0.68rem;color:var(--text-muted)">${c.d}</span>`;
+  el.onmouseover = () => el.style.borderColor = 'var(--accent)';
+  el.onmouseout = () => el.style.borderColor = 'var(--border)';
+  el.onclick = () => { document.getElementById('xpath-input').value = c.x; testXPath(); };
+  quickCheat.appendChild(el);
+});
+</script>
+</body>
+</html>
